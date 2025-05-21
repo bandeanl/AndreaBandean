@@ -21,7 +21,7 @@
         }
         header {
             width: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(255, 255, 255, 0.2);
             padding: 40px;
             border-radius: 10px;
             margin: 20px 0;
@@ -31,6 +31,7 @@
             font-family: 'Playfair Display', serif;
             font-size: 3em;
             margin: 0;
+            color: white;
         }
         section {
             width: 80%;
@@ -48,6 +49,32 @@
             height: auto;
             aspect-ratio: 16 / 9;
         }
+        .floating-link {
+            position: fixed;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+            padding: 10px 15px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            width: max-content;
+        }
+        .floating-link.videos {
+            bottom: 70px;
+        }
+        .floating-link.photos {
+            bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .floating-link {
+                right: 10px;
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+        }
     </style>
    
 </head>
@@ -64,7 +91,11 @@
                 <li style="margin: 0 15px;"><a href="#photos" style="color: white; text-decoration: none;">Photos</a></li>
             </ul>
         </nav>
-    </header>   
+    </header>
+
+    <a href="#Auftrittvideos" class="floating-link videos">Videos</a>
+    <a href="#photos" class="floating-link photos">Photos</a>
+
     <section id="resume">
         <h2>Über mich</h2>
                 <p style="text-align: left;">
