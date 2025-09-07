@@ -227,5 +227,13 @@
         }, 1000);
     });
     </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    if (window.location.search) {
+        const cleanUrl = window.location.origin + window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+    }
+});
+</script>
 </body>
 </html>
