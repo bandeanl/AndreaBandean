@@ -110,7 +110,7 @@
 
     <section id="resume">
         <h2>Über mich</h2>
-                <p style="text-align: left;">
+        <p style="text-align: left;">
             Andrea Bandean-Gombkötö ist eine erfahrene Klavierlehrerin mit über 20 Jahren Erfahrung...
         </p>
         <p style="text-align: left;">
@@ -138,6 +138,7 @@
             <img src="index/images/Andrea_piano_perf_2.jpg" style="width:100%; max-width:600px;">
         </div>        
     </section> 
+
     <section id="Auftrittvideos">
         <h2>Auftrittvideos</h2>
         <div class="video">
@@ -146,14 +147,14 @@
         <div class="video">
             <iframe src="https://drive.google.com/file/d/1_aYhj4SQ6J1etmuyasNGz5GYHkUEKo3X/preview" allow="autoplay"></iframe>
         </div>
-	    <div class="video">
+        <div class="video">
             <iframe src="https://drive.google.com/file/d/1eGIw1I57mRQR83Wks-b08cFV7uuwLAtI/preview" allow="autoplay"></iframe>
         </div>
-	    <div class="video">
+        <div class="video">
             <h3>Kamermusik</h3>
             <iframe src="https://drive.google.com/file/d/1vFPFc-noV5PSNGh5UsbN131YixRXSGdR/preview" allow="autoplay"></iframe>
         </div>
-	    <div class="video">
+        <div class="video">
             <iframe src="https://drive.google.com/file/d/1E_ZzSZl3uwUNys53R5SOUdUxQhg_AFKx/preview" allow="autoplay"></iframe>
         </div>    
     </section>
@@ -170,7 +171,7 @@
             <a href="index/images/Andrea_piano_perf_3.jpg" target="_blank">
                 <img src="index/images/Andrea_piano_perf_3.jpg" alt="Andrea Piano Performance 3" style="width: 300px; height: auto; border-radius: 10px;">
             </a>
-	        <a href="index/images/Andrea_piano_perf_3.jpg" target="_blank">
+            <a href="index/images/Andrea_piano_perf_3.jpg" target="_blank">
                 <img src="index/images/ArtSchool_going.jpg" alt="KlavierSchule Kinder" style="width: 300px; height: auto; border-radius: 10px;">
             </a>	
         </div>
@@ -189,57 +190,42 @@
         </a>
     </footer>
 
-    <!-- Autoscroll Script -->
- <script>
-document.addEventListener("DOMContentLoaded", function() {
-    const videos = document.querySelectorAll("#Auftrittvideos .video");
-    let currentIndex = 0;
+    <!-- Smooth scroll to videos on load -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const videoSection = document.getElementById("Auftrittvideos");
 
-    function smoothScrollTo(element, duration = 2000) {
-        const targetPosition = element.getBoundingClientRect().top + window.scrollY - (window.innerHeight / 3);
-        const startPosition = window.scrollY;
-        const distance = targetPosition - startPosition;
-        let startTime = null;
+        function smoothScrollTo(element, duration = 4000) {
+            const targetPosition = element.getBoundingClientRect().top + window.scrollY - 50;
+            const startPosition = window.scrollY;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
 
-        function animation(currentTime) {
-            if (!startTime) startTime = currentTime;
-            const timeElapsed = currentTime - startTime;
-            const progress = Math.min(timeElapsed / duration, 1);
+            function animation(currentTime) {
+                if (!startTime) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
 
-            // Ease function (easeInOutQuad)
-            const ease = progress < 0.5 
-                ? 2 * progress * progress 
-                : -1 + (4 - 2 * progress) * progress;
+                // Ease function (easeInOutQuad)
+                const ease = progress < 0.5 
+                    ? 2 * progress * progress 
+                    : -1 + (4 - 2 * progress) * progress;
 
-            window.scrollTo(0, startPosition + distance * ease);
+                window.scrollTo(0, startPosition + distance * ease);
 
-            if (timeElapsed < duration) {
-                requestAnimationFrame(animation);
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
             }
+
+            requestAnimationFrame(animation);
         }
 
-        requestAnimationFrame(animation);
-    }
-
-    function scrollToVideo(index) {
-        if (index < videos.length) {
-            smoothScrollTo(videos[index], 2500); // 2.5s scroll
-        }
-    }
-
-    function nextVideo() {
-        currentIndex++;
-        if (currentIndex < videos.length) {
-            scrollToVideo(currentIndex);
-        }
-    }
-
-    // Start at the first video
-    scrollToVideo(currentIndex);
-
-    // Auto-scroll every 60 seconds (adjust timing if needed)
-    setInterval(nextVideo, 60000);
-});
-</script>
+        // Scroll to videos 1s after load
+        setTimeout(() => {
+            smoothScrollTo(videoSection, 4000);
+        }, 1000);
+    });
+    </script>
 </body>
 </html>
