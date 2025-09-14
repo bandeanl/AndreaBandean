@@ -1,239 +1,368 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andrea Bandean- Klavierlehrerin</title>
-    <link rel="stylesheet" href="styles.css">    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Andrea Bandean – Klavierunterricht</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    body {
+  	background: url("index/piano_backreound_3.jpg") no-repeat center center fixed;
+  	background-size: cover;
+  	color: #2e2e2e;
+  	font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  	line-height: 1.7;
+    }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            background-image: url('index/piano-background.jpg'); /* Update the path to your photo */
-            background-size: cover;
-            background-attachment: fixed;
-            color: white;
-            font-family: 'Arial', sans-serif;
-        }
-        header {
-            width: 100%;
-            background-color: rgba(100, 150, 150, 0.2);
-            padding: 40px;
-            border-radius: 10px;
-            margin: 20px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3em;
-            margin: 0;
-            color: white;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        nav ul li a:hover,
-        nav ul li a:focus {
-            background-color: rgba(255, 255, 255, 0.3);
-            color: #000;
-        }
-        section {
-            width: 80%;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-        }
-        h1, h2, h3 {
-            font-family: 'Georgia', serif;
-        }
-        .video iframe {
-            width: 100%;
-            max-width: 640px;
-            height: auto;
-            aspect-ratio: 16 / 9;
-        }
-        .floating-link {
-            position: fixed;
-            right: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: black;
-            padding: 10px 15px;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            width: max-content;
-        }
-        .floating-link.videos {
-            bottom: 70px;
-        }
-        .floating-link.photos {
-            bottom: 20px;
-        }
-        @media (max-width: 600px) {
-            .floating-link {
-                right: 10px;
-                padding: 8px 12px;
-                font-size: 0.9em;
-            }
-        }
-    </style>
-   
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: -1;
+    }
+
+    main, section, footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 14px;
+      margin-top: 2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    h1, h2, h3 {
+      color: #5a189a; /* Lila Akzent */
+      text-shadow: none;
+    }
+
+    p, small, li {
+      color: #333;
+    }
+
+    a {
+      color: #7b2cbf;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #9d4edd;
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      padding: 1rem 2rem;
+      margin-top: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    nav a {
+      color: #5a189a;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #9d4edd;
+    }
+
+    /* Portrait-Bild */
+    .portrait {
+      float: left;
+      max-width: 220px;
+      margin: 0 1.5rem 1rem 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    /* Video Grid */
+    .video-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.2rem;
+    }
+    .video-grid iframe {
+      width:100%;
+      height:200px;
+      border-radius:12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .video-grid iframe:hover {
+      transform: scale(1.03);
+    }
+
+    /* Foto Grid */
+    .photo-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1.2rem;
+    }
+    .photo-grid img {
+      border-radius:12px;
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .photo-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Preise */
+    .price-list {
+      list-style: none;
+      padding-left: 1rem;
+      margin-top: 1rem;
+      font-size: 1.15rem;
+    }
+    .price-list li {
+      margin: 0.6rem 0;
+      padding-left: 0.6rem;
+      border-left: 4px solid #9d4edd;
+    }
+    .price-list strong {
+      color: #5a189a;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    .flags img {
+      width:28px;
+      height:20px;
+      cursor:pointer;
+      margin-left:0.5rem;
+      border:1px solid #ccc;
+      border-radius:3px;
+      transition: transform 0.2s;
+    }
+    .flags img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .portrait {
+        float: none;
+        display: block;
+        margin: 0 auto 1.5rem auto;
+      }
+      main, section, footer {
+        padding: 1.2rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      h3 {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div style="display: flex; align-items: center; justify-content: center;">
-            <img src="index/images/Portrait.jpg" alt="Andrea Bandean Portrait" style="width: 100px; height: auto; margin-right: 20px; border-radius: 50%;">
-            <h1>Andrea Bandean - Klavierlehrerin</h1>
-        </div>
-        <nav>
-            <ul style="list-style: none; display: flex; justify-content: center; padding: 0; margin: 20px 0;">
-                <li style="margin: 0 15px;"><a href="#resume" style="color: white; text-decoration: none;">Über mich</a></li>
-                <li style="margin: 0 15px;"><a href="#Auftrittvideos" style="color: white; text-decoration: none;">Auftrittvideos</a></li>
-                <li style="margin: 0 15px;"><a href="#photos" style="color: white; text-decoration: none;">Photos</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Navigation -->
+  <nav class="container-fluid">
+    <ul>
+      <li><strong id="siteTitle">Klavierunterricht</strong></li>
+    </ul>
+    <ul>
+      <li><a href="#ueber" id="navAbout">Über mich</a></li>
+      <li><a href="#videos" id="navVideos">Videos</a></li>
+      <li><a href="#fotos" id="navPhotos">Fotos</a></li>
+      <li><a href="#preise" id="navPrices">Preise</a></li>
+      <li><a href="#kontakt" role="button" id="navContact">Kontakt</a></li>
+      <li class="flags">
+        <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" onclick="setLanguage('de')">
+        <img src="https://flagcdn.com/w20/hu.png" alt="Magyar" onclick="setLanguage('hu')">
+        <img src="https://flagcdn.com/w20/ro.png" alt="Română" onclick="setLanguage('ro')">
+        <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="setLanguage('en')">
+      </li>
+    </ul>
+  </nav>
 
-    <a href="#Auftrittvideos" class="floating-link videos">Videos</a>
-    <a href="#photos" class="floating-link photos">Photos</a>
-
-    <section id="resume">
-        <h2>Über mich</h2>
-        <p style="text-align: left;">
-            Andrea Bandean-Gombkötö ist eine erfahrene Klavierlehrerin mit über 20 Jahren Erfahrung...
-        </p>
-        <p style="text-align: left;">
-            Andrea Bandean-Gombkötö<br>
-            Klavierpädagogin | Musikpädagogin | Musikliebhaberin<br>
-            Geboren in Siebenbürgen (Targu Mures, Rumänien), führte mich mein Weg früh zur Musik und insbesondere zum Klavier. Nach meinem abgeschlossenen Musikstudium mit dem Hauptfach Klavier an der Universität Oradea und einem darauf folgenden Masterabschluss in Bildungsmanagement konnte ich meine Leidenschaft zum Beruf machen.<br>
-            Seit über 20 Jahren unterrichte ich Kinder, Jugendliche und Erwachsene – sowohl im Einzel- als auch im Gruppenunterricht. Ich lege großen Wert darauf, jede Schülerin und jeden Schüler individuell zu fördern und den Zugang zur Musik mit Freude, Geduld und Professionalität zu gestalten.<br>
-            Besondere Schwerpunkte meiner Arbeit:<br>
-            • Klavierunterricht für Anfänger und Fortgeschrittene<br>
-            • Musikalische Früherziehung für Kinder<br>
-            • Vorbereitung auf Konzerte und Wettbewerbe<br>
-            • Projektleitung und musikalische Veranstaltungsorganisation<br>
-            Neben meiner Tätigkeit an der Ungarischen Konsularschule Baden-Württemberg und früher am Musikgymnasium „Liceul Vocational de Arta” in Targu Mures, durfte ich zahlreiche Talente begleiten und bei nationalen wie internationalen Wettbewerben erfolgreich betreuen.<br>
-            ________________________________________<br>
-            Meine Philosophie<br>
-            „Musik beginnt dort, wo Worte enden.“<br>
-            Die Musik ist für mich eine universelle Sprache, die Herzen berührt und Persönlichkeiten formt. Es erfüllt mich, Menschen für die Musik zu begeistern und ihre künstlerische Entwicklung mitzuerleben.<br>
-            ________________________________________<br>
-            Kontakt<br>
-            📧 andreabandean@aol.com<br>
-            📞 +49 176 3459 3975<br>
-            📍 71706 Unterriexingen
-        </p>  
-        <div>
-            <img src="index/images/Andrea_piano_perf_2.jpg" style="width:100%; max-width:600px;">
-        </div>        
-    </section> 
-
-    <section id="Auftrittvideos">
-        <h2>Auftrittvideos</h2>
-        <div class="video">
-            <iframe src="https://drive.google.com/file/d/1cD8Rsd3pDd33FQSH-D0hwtlh7Cv8kHK3/preview" allow="autoplay"></iframe>
-        </div>
-        <div class="video">
-            <iframe src="https://drive.google.com/file/d/1_aYhj4SQ6J1etmuyasNGz5GYHkUEKo3X/preview" allow="autoplay"></iframe>
-        </div>
-        <div class="video">
-            <iframe src="https://drive.google.com/file/d/1eGIw1I57mRQR83Wks-b08cFV7uuwLAtI/preview" allow="autoplay"></iframe>
-        </div>
-        <div class="video">
-            <h3>Kamermusik</h3>
-            <iframe src="https://drive.google.com/file/d/1vFPFc-noV5PSNGh5UsbN131YixRXSGdR/preview" allow="autoplay"></iframe>
-        </div>
-        <div class="video">
-            <iframe src="https://drive.google.com/file/d/1E_ZzSZl3uwUNys53R5SOUdUxQhg_AFKx/preview" allow="autoplay"></iframe>
-        </div>    
+  <!-- Über mich -->
+  <main class="container">
+    <section id="ueber">
+      <hgroup>
+        <h2 id="mainTitle">Andrea Bandean – Klavierlehrerin</h2>
+        <h3 id="mainSubtitle">Individuelle Klavierstunden für Kinder, Jugendliche & Erwachsene</h3>
+      </hgroup>
+      <img src="index/images/Portrait.jpg" alt="Portrait von Andrea Bandean" class="portrait">
+      <p id="introText">
+        Andrea Bandean-Gombkötö ist eine erfahrene Klavierlehrerin mit über 20 Jahren Erfahrung.<br><br>
+        <strong>Andrea Bandean-Gombkötö</strong><br>
+        Klavierpädagogin | Musikpädagogin | Musikliebhaberin<br><br>
+        Geboren in Siebenbürgen (Targu Mures, Rumänien), führte mich mein Weg früh zur Musik und insbesondere zum Klavier. 
+        Nach meinem abgeschlossenen Musikstudium mit dem Hauptfach Klavier an der Universität Oradea und einem darauf folgenden Masterabschluss in Bildungsmanagement konnte ich meine Leidenschaft zum Beruf machen.<br><br>
+        Seit über 20 Jahren unterrichte ich Kinder, Jugendliche und Erwachsene – sowohl im Einzel- als auch im Gruppenunterricht. 
+        Ich lege großen Wert darauf, jede Schülerin und jeden Schüler individuell zu fördern und den Zugang zur Musik mit Freude, Geduld und Professionalität zu gestalten.<br><br>
+        <strong>Besondere Schwerpunkte meiner Arbeit:</strong><br>
+        • Klavierunterricht für Anfänger und Fortgeschrittene<br>
+        • Musikalische Früherziehung für Kinder<br>
+        • Vorbereitung auf Konzerte und Wettbewerbe<br>
+        • Projektleitung und musikalische Veranstaltungsorganisation<br><br>
+        Neben meiner Tätigkeit an der Ungarischen Konsularschule Baden-Württemberg und früher am Musikgymnasium „Liceul Vocational de Arta” in Targu Mures, durfte ich zahlreiche Talente begleiten und bei nationalen wie internationalen Wettbewerben erfolgreich betreuen.<br><br>
+        ________________________________________<br><br>
+        <strong>Meine Philosophie</strong><br>
+        „Musik beginnt dort, wo Worte enden.“<br>
+        Die Musik ist für mich eine universelle Sprache, die Herzen berührt und Persönlichkeiten formt. 
+        Es erfüllt mich, Menschen für die Musik zu begeistern und ihre künstlerische Entwicklung mitzuerleben.
+      </p>
     </section>
-	
-    <section id="photos">
-        <h2>Photos</h2>
-        <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-            <a href="index/images/Andrea_piano_perf_1.jpg" target="_blank">
-                <img src="index/images/Andrea_piano_perf_1.jpg" alt="Andrea Piano Performance 1" style="width: 300px; height: auto; border-radius: 10px;">
-            </a>
-            <a href="index/images/Andrea_piano_perf_2.jpg" target="_blank">
-                <img src="index/images/Andrea_piano_perf_2.jpg" alt="Andrea Piano Performance 2" style="width: 300px; height: auto; border-radius: 10px;">
-            </a>
-            <a href="index/images/Andrea_piano_perf_3.jpg" target="_blank">
-                <img src="index/images/Andrea_piano_perf_3.jpg" alt="Andrea Piano Performance 3" style="width: 300px; height: auto; border-radius: 10px;">
-            </a>
-            <a href="index/images/Andrea_piano_perf_3.jpg" target="_blank">
-                <img src="index/images/ArtSchool_going.jpg" alt="KlavierSchule Kinder" style="width: 300px; height: auto; border-radius: 10px;">
-            </a>	
-        </div>
-        <div style="text-align: center; margin-top: 20px;">
-            <h3>Email me</h3>
-            <a href="mailto:andreabandean@aol.com" style="color: white; text-decoration: none; font-size: 1.2em;">📧 andreabandean@aol.com</a>
-        </div>
-    </section>
+  </main>
 
-    <footer style="margin-top: 20px; text-align: center; color: white; font-size: 0.9em;">
-        <p>Visitors:</p>
-        <a href="https://www.hitwebcounter.com" target="_blank">
-            <img src="https://hitwebcounter.com/counter/counter.php?page=20676474&style=0030&nbdigits=7&type=ip&initCount=0" 
-                 title="Counter Widget" alt="Web Counter"
-                 style="border: none; display: inline-block;" />
-        </a>
-    </footer>
+  <!-- Videos -->
+  <section id="videos" class="container">
+    <hgroup>
+      <h2 id="videoTitle">Auftrittsvideos</h2>
+      <h3 id="videoSubtitle">Einblicke in meine Konzerte</h3>
+    </hgroup>
+    <div class="video-grid">
+      <iframe src="https://drive.google.com/file/d/1cD8Rsd3pDd33FQSH-D0hwtlh7Cv8kHK3/preview"></iframe>
+      <iframe src="https://drive.google.com/file/d/1_aYhj4SQ6J1etmuyasNGz5GYHkUEKo3X/preview"></iframe>
+      <iframe src="https://drive.google.com/file/d/1eGIw1I57mRQR83Wks-b08cFV7uuwLAtI/preview"></iframe>
+      <iframe src="https://drive.google.com/file/d/1vFPFc-noV5PSNGh5UsbN131YixRXSGdR/preview"></iframe>
+      <iframe src="https://drive.google.com/file/d/1E_ZzSZl3uwUNys53R5SOUdUxQhg_AFKx/preview"></iframe>
+    </div>
+  </section>
 
-    <!-- Smooth scroll to videos on load -->
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const videoSection = document.getElementById("Auftrittvideos");
+  <!-- Fotos -->
+  <section id="fotos" class="container">
+    <hgroup>
+      <h2 id="photoTitle">Fotos</h2>
+      <h3 id="photoSubtitle">Momente aus Unterricht & Auftritten</h3>
+    </hgroup>
+    <div class="photo-grid">
+      <img src="index/images/Andrea_piano_perf_1.jpg" alt="Andrea Piano Performance 1">
+      <img src="index/images/Andrea_piano_perf_2.jpg" alt="Andrea Piano Performance 2">
+      <img src="index/images/Andrea_piano_perf_3.jpg" alt="Andrea Piano Performance 3">
+      <img src="index/images/ArtSchool_going.jpg" alt="Klavierschule Kinder">
+    </div>
+  </section>
 
-        function smoothScrollTo(element, duration = 4000) {
-            const targetPosition = element.getBoundingClientRect().top + window.scrollY - 50;
-            const startPosition = window.scrollY;
-            const distance = targetPosition - startPosition;
-            let startTime = null;
+  <!-- Preise -->
+  <section id="preise" class="container">
+    <hgroup>
+      <h2>Preise</h2>
+      <h3>Flexible Unterrichtsmöglichkeiten</h3>
+    </hgroup>
+    <ul class="price-list">
+      <li>🎹 1 Stunde Unterricht im Studio: <strong>35 €</strong></li>
+      <li>🏠 1 Stunde Unterricht beim Schüler zuhause: <strong>45 €</strong></li>
+    </ul>
+  </section>
 
-            function animation(currentTime) {
-                if (!startTime) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
+  <!-- Kontakt -->
+  <section id="kontakt" class="container" aria-label="Kontakt">
+    <hgroup>
+      <h2 id="contactTitle">Kontakt</h2>
+      <h3 id="contactSubtitle">Schreiben Sie mir für Probestunden oder Fragen</h3>
+    </hgroup>
+    <p>📧 <a href="mailto:andreabandean@aol.com">andreabandean@aol.com</a><br>
+       📞 +49 176 3459 3975<br>
+       📍 71706 Unterriexingen
+    </p>
+  </section>
 
-                // Ease function (easeInOutQuad)
-                const ease = progress < 0.5 
-                    ? 2 * progress * progress 
-                    : -1 + (4 - 2 * progress) * progress;
+  <!-- Footer -->
+  <footer class="container">
+    <small id="footerText">Besucherzähler</small><br>
+    <a href="https://www.hitwebcounter.com" target="_blank">
+      <img src="https://hitwebcounter.com/counter/counter.php?page=20676474&style=0030&nbdigits=7&type=ip&initCount=0"
+           title="Counter Widget" alt="Web Counter" style="border:none;" />
+    </a>
+  </footer>
 
-                window.scrollTo(0, startPosition + distance * ease);
+  <!-- Mehrsprachen Script -->
+  <script>
+    const translations = {
+      de: {
+        siteTitle: "Klavierunterricht",
+        navAbout: "Über mich",
+        navVideos: "Videos",
+        navPhotos: "Fotos",
+        navPrices: "Preise",
+        navContact: "Kontakt",
+        mainTitle: "Andrea Bandean – Klavierlehrerin",
+        mainSubtitle: "Individuelle Klavierstunden für Kinder, Jugendliche & Erwachsene",
+        videoTitle: "Auftrittsvideos",
+        videoSubtitle: "Einblicke in meine Konzerte",
+        photoTitle: "Fotos",
+        photoSubtitle: "Momente aus Unterricht & Auftritten",
+        contactTitle: "Kontakt",
+        contactSubtitle: "Schreiben Sie mir für Probestunden oder Fragen",
+        footerText: "Besucherzähler"
+      },
+      hu: {
+        siteTitle: "Zongoraoktatás",
+        navAbout: "Rólam",
+        navVideos: "Videók",
+        navPhotos: "Fotók",
+        navPrices: "Árak",
+        navContact: "Kapcsolat",
+        mainTitle: "Andrea Bandean – Zongoratanár",
+        mainSubtitle: "Egyéni zongoraórák gyermekeknek, fiataloknak és felnőtteknek",
+        videoTitle: "Előadásvideók",
+        videoSubtitle: "Bele pillantás a koncertjeimbe",
+        photoTitle: "Fotók",
+        photoSubtitle: "Pillanatok az órákról és fellépésekről",
+        contactTitle: "Kapcsolat",
+        contactSubtitle: "Írjon nekem próbaórára vagy kérdésekre",
+        footerText: "Látogatók száma"
+      },
+      ro: {
+        siteTitle: "Cursuri de pian",
+        navAbout: "Despre mine",
+        navVideos: "Videouri",
+        navPhotos: "Fotografii",
+        navPrices: "Prețuri",
+        navContact: "Contact",
+        mainTitle: "Andrea Bandean – Profesor de pian",
+        mainSubtitle: "Lecții individuale de pian pentru copii, tineri și adulți",
+        videoTitle: "Videouri de concert",
+        videoSubtitle: "Momente din concertele mele",
+        photoTitle: "Fotografii",
+        photoSubtitle: "Momente din lecții și spectacole",
+        contactTitle: "Contact",
+        contactSubtitle: "Scrieți-mi pentru lecții de probă sau întrebări",
+        footerText: "Număr vizitatori"
+      },
+      en: {
+        siteTitle: "Piano Lessons",
+        navAbout: "About Me",
+        navVideos: "Videos",
+        navPhotos: "Photos",
+        navPrices: "Prices",
+        navContact: "Contact",
+        mainTitle: "Andrea Bandean – Piano Teacher",
+        mainSubtitle: "Personalized piano lessons for children, teenagers & adults",
+        videoTitle: "Performance Videos",
+        videoSubtitle: "A glimpse into my concerts",
+        photoTitle: "Photos",
+        photoSubtitle: "Moments from teaching & performances",
+        contactTitle: "Contact",
+        contactSubtitle: "Write me for trial lessons or questions",
+        footerText: "Visitor Counter"
+      }
+    };
 
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
-                }
-            }
+    const elements = [
+      "siteTitle","navAbout","navVideos","navPhotos","navPrices","navContact",
+      "mainTitle","mainSubtitle","videoTitle","videoSubtitle",
+      "photoTitle","photoSubtitle","contactTitle","contactSubtitle","footerText"
+    ];
 
-            requestAnimationFrame(animation);
+    function setLanguage(lang) {
+      elements.forEach(id => {
+        if (document.getElementById(id)) {
+          document.getElementById(id).innerText = translations[lang][id];
         }
-
-        // Scroll to videos 1s after load
-        setTimeout(() => {
-            smoothScrollTo(videoSection, 4000);
-        }, 1000);
-    });
-    </script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-    if (window.location.search) {
-        const cleanUrl = window.location.origin + window.location.pathname;
-        window.history.replaceState({}, document.title, cleanUrl);
+      });
+      document.documentElement.lang = lang;
     }
-});
-</script>
+  </script>
 </body>
 </html>
