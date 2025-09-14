@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
   <style>
     body {
-  	background: url("index/piano_backreound_3.jpg") no-repeat center center fixed;
-  	background-size: cover;
-  	color: #2e2e2e;
-  	font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  	line-height: 1.7;
+      background: url("index/piano_backreound_3.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #2e2e2e;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
     }
 
     body::before {
@@ -31,7 +31,7 @@
     }
 
     h1, h2, h3 {
-      color: #5a189a; /* Lila Akzent */
+      color: #5a189a;
       text-shadow: none;
     }
 
@@ -63,7 +63,7 @@
       color: #9d4edd;
     }
 
-    /* Portrait-Bild */
+    /* Portrait */
     .portrait {
       float: left;
       max-width: 220px;
@@ -78,15 +78,21 @@
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
       gap:1.2rem;
     }
-    .video-grid iframe {
-      width:100%;
-      height:200px;
-      border-radius:12px;
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
     }
-    .video-grid iframe:hover {
-      transform: scale(1.03);
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
     /* Foto Grid */
@@ -134,7 +140,7 @@
       width:28px;
       height:20px;
       cursor:pointer;
-      margin-left:0.5rem;
+      margin:0.3rem 0.3rem 0 0;
       border:1px solid #ccc;
       border-radius:3px;
       transition: transform 0.2s;
@@ -166,7 +172,15 @@
   <!-- Navigation -->
   <nav class="container-fluid">
     <ul>
-      <li><strong id="siteTitle">Klavierunterricht</strong></li>
+      <li>
+        <strong id="siteTitle">Klavierunterricht</strong><br>
+        <span class="flags">
+          <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" onclick="setLanguage('de')">
+          <img src="https://flagcdn.com/w20/hu.png" alt="Magyar" onclick="setLanguage('hu')">
+          <img src="https://flagcdn.com/w20/ro.png" alt="Română" onclick="setLanguage('ro')">
+          <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="setLanguage('en')">
+        </span>
+      </li>
     </ul>
     <ul>
       <li><a href="#ueber" id="navAbout">Über mich</a></li>
@@ -174,12 +188,6 @@
       <li><a href="#fotos" id="navPhotos">Fotos</a></li>
       <li><a href="#preise" id="navPrices">Preise</a></li>
       <li><a href="#kontakt" role="button" id="navContact">Kontakt</a></li>
-      <li class="flags">
-        <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" onclick="setLanguage('de')">
-        <img src="https://flagcdn.com/w20/hu.png" alt="Magyar" onclick="setLanguage('hu')">
-        <img src="https://flagcdn.com/w20/ro.png" alt="Română" onclick="setLanguage('ro')">
-        <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="setLanguage('en')">
-      </li>
     </ul>
   </nav>
 
@@ -221,148 +229,11 @@
       <h3 id="videoSubtitle">Einblicke in meine Konzerte</h3>
     </hgroup>
     <div class="video-grid">
-      <iframe src="https://drive.google.com/file/d/1cD8Rsd3pDd33FQSH-D0hwtlh7Cv8kHK3/preview"></iframe>
-      <iframe src="https://drive.google.com/file/d/1_aYhj4SQ6J1etmuyasNGz5GYHkUEKo3X/preview"></iframe>
-      <iframe src="https://drive.google.com/file/d/1eGIw1I57mRQR83Wks-b08cFV7uuwLAtI/preview"></iframe>
-      <iframe src="https://drive.google.com/file/d/1vFPFc-noV5PSNGh5UsbN131YixRXSGdR/preview"></iframe>
-      <iframe src="https://drive.google.com/file/d/1E_ZzSZl3uwUNys53R5SOUdUxQhg_AFKx/preview"></iframe>
-    </div>
-  </section>
-
-  <!-- Fotos -->
-  <section id="fotos" class="container">
-    <hgroup>
-      <h2 id="photoTitle">Fotos</h2>
-      <h3 id="photoSubtitle">Momente aus Unterricht & Auftritten</h3>
-    </hgroup>
-    <div class="photo-grid">
-      <img src="index/images/Andrea_piano_perf_1.jpg" alt="Andrea Piano Performance 1">
-      <img src="index/images/Andrea_piano_perf_2.jpg" alt="Andrea Piano Performance 2">
-      <img src="index/images/Andrea_piano_perf_3.jpg" alt="Andrea Piano Performance 3">
-      <img src="index/images/ArtSchool_going.jpg" alt="Klavierschule Kinder">
-    </div>
-  </section>
-
-  <!-- Preise -->
-  <section id="preise" class="container">
-    <hgroup>
-      <h2>Preise</h2>
-      <h3>Flexible Unterrichtsmöglichkeiten</h3>
-    </hgroup>
-    <ul class="price-list">
-      <li>🎹 1 Stunde Unterricht im Studio: <strong>35 €</strong></li>
-      <li>🏠 1 Stunde Unterricht beim Schüler zuhause: <strong>45 €</strong></li>
-    </ul>
-  </section>
-
-  <!-- Kontakt -->
-  <section id="kontakt" class="container" aria-label="Kontakt">
-    <hgroup>
-      <h2 id="contactTitle">Kontakt</h2>
-      <h3 id="contactSubtitle">Schreiben Sie mir für Probestunden oder Fragen</h3>
-    </hgroup>
-    <p>📧 <a href="mailto:andreabandean@aol.com">andreabandean@aol.com</a><br>
-       📞 +49 176 3459 3975<br>
-       📍 71706 Unterriexingen
-    </p>
-  </section>
-
-  <!-- Footer -->
-  <footer class="container">
-    <small id="footerText">Besucherzähler</small><br>
-    <a href="https://www.hitwebcounter.com" target="_blank">
-      <img src="https://hitwebcounter.com/counter/counter.php?page=20676474&style=0030&nbdigits=7&type=ip&initCount=0"
-           title="Counter Widget" alt="Web Counter" style="border:none;" />
-    </a>
-  </footer>
-
-  <!-- Mehrsprachen Script -->
-  <script>
-    const translations = {
-      de: {
-        siteTitle: "Klavierunterricht",
-        navAbout: "Über mich",
-        navVideos: "Videos",
-        navPhotos: "Fotos",
-        navPrices: "Preise",
-        navContact: "Kontakt",
-        mainTitle: "Andrea Bandean – Klavierlehrerin",
-        mainSubtitle: "Individuelle Klavierstunden für Kinder, Jugendliche & Erwachsene",
-        videoTitle: "Auftrittsvideos",
-        videoSubtitle: "Einblicke in meine Konzerte",
-        photoTitle: "Fotos",
-        photoSubtitle: "Momente aus Unterricht & Auftritten",
-        contactTitle: "Kontakt",
-        contactSubtitle: "Schreiben Sie mir für Probestunden oder Fragen",
-        footerText: "Besucherzähler"
-      },
-      hu: {
-        siteTitle: "Zongoraoktatás",
-        navAbout: "Rólam",
-        navVideos: "Videók",
-        navPhotos: "Fotók",
-        navPrices: "Árak",
-        navContact: "Kapcsolat",
-        mainTitle: "Andrea Bandean – Zongoratanár",
-        mainSubtitle: "Egyéni zongoraórák gyermekeknek, fiataloknak és felnőtteknek",
-        videoTitle: "Előadásvideók",
-        videoSubtitle: "Bele pillantás a koncertjeimbe",
-        photoTitle: "Fotók",
-        photoSubtitle: "Pillanatok az órákról és fellépésekről",
-        contactTitle: "Kapcsolat",
-        contactSubtitle: "Írjon nekem próbaórára vagy kérdésekre",
-        footerText: "Látogatók száma"
-      },
-      ro: {
-        siteTitle: "Cursuri de pian",
-        navAbout: "Despre mine",
-        navVideos: "Videouri",
-        navPhotos: "Fotografii",
-        navPrices: "Prețuri",
-        navContact: "Contact",
-        mainTitle: "Andrea Bandean – Profesor de pian",
-        mainSubtitle: "Lecții individuale de pian pentru copii, tineri și adulți",
-        videoTitle: "Videouri de concert",
-        videoSubtitle: "Momente din concertele mele",
-        photoTitle: "Fotografii",
-        photoSubtitle: "Momente din lecții și spectacole",
-        contactTitle: "Contact",
-        contactSubtitle: "Scrieți-mi pentru lecții de probă sau întrebări",
-        footerText: "Număr vizitatori"
-      },
-      en: {
-        siteTitle: "Piano Lessons",
-        navAbout: "About Me",
-        navVideos: "Videos",
-        navPhotos: "Photos",
-        navPrices: "Prices",
-        navContact: "Contact",
-        mainTitle: "Andrea Bandean – Piano Teacher",
-        mainSubtitle: "Personalized piano lessons for children, teenagers & adults",
-        videoTitle: "Performance Videos",
-        videoSubtitle: "A glimpse into my concerts",
-        photoTitle: "Photos",
-        photoSubtitle: "Moments from teaching & performances",
-        contactTitle: "Contact",
-        contactSubtitle: "Write me for trial lessons or questions",
-        footerText: "Visitor Counter"
-      }
-    };
-
-    const elements = [
-      "siteTitle","navAbout","navVideos","navPhotos","navPrices","navContact",
-      "mainTitle","mainSubtitle","videoTitle","videoSubtitle",
-      "photoTitle","photoSubtitle","contactTitle","contactSubtitle","footerText"
-    ];
-
-    function setLanguage(lang) {
-      elements.forEach(id => {
-        if (document.getElementById(id)) {
-          document.getElementById(id).innerText = translations[lang][id];
-        }
-      });
-      document.documentElement.lang = lang;
-    }
-  </script>
-</body>
-</html>
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1cD8Rsd3pDd33FQSH-D0hwtlh7Cv8kHK3/preview" allowfullscreen></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1_aYhj4SQ6J1etmuyasNGz5GYHkUEKo3X/preview" allowfullscreen></iframe>
+      </div>
+      <div class="video-wrapper">
+        <iframe src="https://drive.google.com/file/d/1eGIw1I57mRQR83Wks-b08cFV7uuwLAtI/preview" allow
