@@ -31,7 +31,7 @@
     }
 
     h1, h2, h3 {
-      color: #5a189a; /* Lila Akzent */
+      color: #5a189a;
       text-shadow: none;
     }
 
@@ -54,6 +54,19 @@
       padding: 1rem 2rem;
       margin-top: 1rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    nav ul:first-child {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
     }
     nav a {
       color: #5a189a;
@@ -61,6 +74,24 @@
     }
     nav a:hover {
       color: #9d4edd;
+    }
+
+    /* Flags */
+    .flags {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .flags img {
+      width: 28px;
+      height: 20px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      transition: transform 0.2s;
+    }
+    .flags img:hover {
+      transform: scale(1.1);
     }
 
     /* Portrait-Bild */
@@ -130,21 +161,24 @@
       color: #444;
     }
 
-    .flags img {
-      width:28px;
-      height:20px;
-      cursor:pointer;
-      margin-left:0.5rem;
-      border:1px solid #ccc;
-      border-radius:3px;
-      transition: transform 0.2s;
-    }
-    .flags img:hover {
-      transform: scale(1.1);
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      nav ul:first-child {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      .flags {
+        margin-bottom: 0.5rem;
+      }
       .portrait {
         float: none;
         display: block;
@@ -167,6 +201,12 @@
   <nav class="container-fluid">
     <ul>
       <li><strong id="siteTitle">Klavierunterricht</strong></li>
+      <li class="flags">
+        <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" onclick="setLanguage('de')">
+        <img src="https://flagcdn.com/w20/hu.png" alt="Magyar" onclick="setLanguage('hu')">
+        <img src="https://flagcdn.com/w20/ro.png" alt="Română" onclick="setLanguage('ro')">
+        <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="setLanguage('en')">
+      </li>
     </ul>
     <ul>
       <li><a href="#ueber" id="navAbout">Über mich</a></li>
@@ -174,12 +214,6 @@
       <li><a href="#fotos" id="navPhotos">Fotos</a></li>
       <li><a href="#preise" id="navPrices">Preise</a></li>
       <li><a href="#kontakt" role="button" id="navContact">Kontakt</a></li>
-      <li class="flags">
-        <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" onclick="setLanguage('de')">
-        <img src="https://flagcdn.com/w20/hu.png" alt="Magyar" onclick="setLanguage('hu')">
-        <img src="https://flagcdn.com/w20/ro.png" alt="Română" onclick="setLanguage('ro')">
-        <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="setLanguage('en')">
-      </li>
     </ul>
   </nav>
 
@@ -246,8 +280,8 @@
   <!-- Preise -->
   <section id="preise" class="container">
     <hgroup>
-      <h2>Preise</h2>
-      <h3>Flexible Unterrichtsmöglichkeiten</h3>
+      <h2 id="pricesTitle">Preise</h2>
+      <h3 id="pricesSubtitle">Flexible Unterrichtsmöglichkeiten</h3>
     </hgroup>
     <ul class="price-list">
       <li>🎹 1 Stunde Unterricht im Studio: <strong>35 €</strong></li>
@@ -294,7 +328,9 @@
         photoSubtitle: "Momente aus Unterricht & Auftritten",
         contactTitle: "Kontakt",
         contactSubtitle: "Schreiben Sie mir für Probestunden oder Fragen",
-        footerText: "Besucherzähler"
+        footerText: "Besucherzähler",
+        pricesTitle: "Preise",
+        pricesSubtitle: "Flexible Unterrichtsmöglichkeiten"
       },
       hu: {
         siteTitle: "Zongoraoktatás",
@@ -311,7 +347,9 @@
         photoSubtitle: "Pillanatok az órákról és fellépésekről",
         contactTitle: "Kapcsolat",
         contactSubtitle: "Írjon nekem próbaórára vagy kérdésekre",
-        footerText: "Látogatók száma"
+        footerText: "Látogatók száma",
+        pricesTitle: "Árak",
+        pricesSubtitle: "Rugalmas oktatási lehetőségek"
       },
       ro: {
         siteTitle: "Cursuri de pian",
@@ -328,7 +366,9 @@
         photoSubtitle: "Momente din lecții și spectacole",
         contactTitle: "Contact",
         contactSubtitle: "Scrieți-mi pentru lecții de probă sau întrebări",
-        footerText: "Număr vizitatori"
+        footerText: "Număr vizitatori",
+        pricesTitle: "Prețuri",
+        pricesSubtitle: "Opțiuni flexibile de predare"
       },
       en: {
         siteTitle: "Piano Lessons",
@@ -345,14 +385,17 @@
         photoSubtitle: "Moments from teaching & performances",
         contactTitle: "Contact",
         contactSubtitle: "Write me for trial lessons or questions",
-        footerText: "Visitor Counter"
+        footerText: "Visitor Counter",
+        pricesTitle: "Prices",
+        pricesSubtitle: "Flexible learning options"
       }
     };
 
     const elements = [
       "siteTitle","navAbout","navVideos","navPhotos","navPrices","navContact",
       "mainTitle","mainSubtitle","videoTitle","videoSubtitle",
-      "photoTitle","photoSubtitle","contactTitle","contactSubtitle","footerText"
+      "photoTitle","photoSubtitle","contactTitle","contactSubtitle","footerText",
+      "pricesTitle","pricesSubtitle"
     ];
 
     function setLanguage(lang) {
