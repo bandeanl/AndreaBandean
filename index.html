@@ -183,6 +183,53 @@
       }
     }
   </style>
+
+  <!-- SEO: dynamic per-language meta description -->
+  <script>
+    (function() {
+      var descriptions = {
+        de: "Klavierunterricht in Unterriexingen, Renningen und Stuttgart – Andrea Bandean, erfahrene Klavierlehrerin für Kinder, Jugendliche und Erwachsene. Klassik, Pop & Filmmusik.",
+        en: "Piano lessons in the Stuttgart area (Unterriexingen, Renningen) with Andrea Bandean — experienced teacher for children, teens and adults. Classical, pop & film music.",
+        hu: "Zongoraórák a stuttgarti régióban (Unterriexingen, Renningen) — Andrea Bandean tapasztalt zongoratanár gyerekeknek, tiniknek és felnőtteknek. Klasszikus, pop és filmzene.",
+        ro: "Lecții de pian în zona Stuttgart (Unterriexingen, Renningen) cu Andrea Bandean — profesoară cu experiență pentru copii, adolescenți și adulți. Muzică clasică, pop și de film."
+      };
+
+      function getLangFromUrlOrHtml() {
+        try {
+          var p = new URLSearchParams(location.search);
+          if (p.get('lang')) return p.get('lang');
+        } catch(e) {}
+        var htmlEl = document.documentElement;
+        return (htmlEl && htmlEl.lang) ? htmlEl.lang : 'de';
+      }
+
+      function updateMetaDescription(lang) {
+        var meta = document.querySelector('meta[name="description"]');
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute('name', 'description');
+          document.head.appendChild(meta);
+        }
+        var text = descriptions[lang] || descriptions.de;
+        meta.setAttribute('content', text);
+      }
+
+      // Patch existing setLanguage if exists so meta description follows language
+      var orig = window.setLanguage;
+      if (typeof orig === 'function') {
+        window.setLanguage = function(lang) {
+          try { orig(lang); } catch(e) {}
+          updateMetaDescription(lang);
+        };
+      }
+
+      // Initialize on load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateMetaDescription(getLangFromUrlOrHtml());
+      });
+    })();
+  </script>
+
 </head>
 <body>
   <!-- Navigation -->
@@ -296,6 +343,7 @@
   <script>
     const translations = {
       de: {
+        description:"Klavierunterricht in Unterriexingen, Renningen und Stuttgart – Andrea Bandean, erfahrene Klavierlehrerin für Kinder, Jugendliche und Erwachsene. Klassik, Pop & Filmmusik.",
         pageTitle:"Andrea Bandean – Klavierunterricht", siteTitle:"Klavierunterricht", navAbout:"Über mich", navVideos:"Videos", navPhotos:"Fotos", navPrices:"Preise", navContact:"Kontakt",
         mainTitle:"Andrea Bandean – Klavierlehrerin", mainSubtitle:"Individueller Klavierunterricht für Kinder, Jugendliche & Erwachsene",
         introText:"<strong>Andrea Bandean-Gombkötő</strong> ist eine leidenschaftliche und engagierte Klavierpädagogin mit über 20 Jahren Erfahrung.",
@@ -310,6 +358,7 @@
         footerText:"Besucherzähler"
       },
       en: {
+        description:"Piano lessons in Unterriexingen, Renningen and Stuttgart – Andrea Bandean, experienced piano teacher for children, teens and adults. Classical, pop & film music.",
         pageTitle:"Andrea Bandean – Piano Lessons", siteTitle:"Piano Lessons", navAbout:"About Me", navVideos:"Videos", navPhotos:"Photos", navPrices:"Prices", navContact:"Contact",
         mainTitle:"Andrea Bandean – Piano Teacher", mainSubtitle:"Personalized Piano Lessons for Children, Teens & Adults",
         introText:"<strong>Andrea Bandean-Gombkötő</strong> is a passionate and dedicated piano teacher with over 20 years of experience.",
@@ -324,6 +373,7 @@
         footerText:"Visitor Counter"
       },
       hu: {
+        description:"Zongoraórák Unterriexingenben, Renningenben és Stuttgartban – Andrea Bandean, tapasztalt zongoratanár gyerekeknek, tiniknek és felnőtteknek. Klasszikus, pop és filmzene.",
         pageTitle:"Andrea Bandean – Zongoraórák", siteTitle:"Zongoraórák", navAbout:"Rólam", navVideos:"Videók", navPhotos:"Fotók", navPrices:"Árak", navContact:"Kapcsolat",
         mainTitle:"Andrea Bandean – Zongoratanár", mainSubtitle:"Személyre szabott zongoraórák gyerekeknek, tiniknek és felnőtteknek",
         introText:"<strong>Andrea Bandean-Gombkötő</strong> szenvedélyes és elhivatott zongoratanár több mint 20 év tapasztalattal.",
@@ -338,6 +388,7 @@
         footerText:"Látogatásszámláló"
       },
       ro: {
+        description:"Lecții de pian în Unterriexingen, Renningen și Stuttgart – Andrea Bandean, profesoară de pian cu experiență pentru copii, adolescenți și adulți. Muzică clasică, pop și de film.",
         pageTitle:"Andrea Bandean – Lecții de pian", siteTitle:"Lecții de pian", navAbout:"Despre mine", navVideos:"Videoclipuri", navPhotos:"Fotografii", navPrices:"Prețuri", navContact:"Contact",
         mainTitle:"Andrea Bandean – Profesor de pian", mainSubtitle:"Lecții personalizate de pian pentru copii, adolescenți și adulți",
         introText:"<strong>Andrea Bandean-Gombkötő</strong> este o profesoară de pian pasionată și dedicată, cu peste 20 de ani de experiență.",
@@ -371,6 +422,12 @@
         }
       });
       document.title = translations[lang].pageTitle;
+      // Update meta description
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && translations[lang].description) {
+        metaDesc.setAttribute("content", translations[lang].description);
+      }
+
       document.documentElement.lang = lang;
     }
   </script>
