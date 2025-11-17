@@ -246,7 +246,6 @@
 <meta name="twitter:title" content="Andrea Bandean – Klavierunterricht">
 <meta name="twitter:description" content="Persönlicher Klavierunterricht mit Andrea Bandean – Klassik, Pop & Filmmusik für alle Altersgruppen">
 <meta name="twitter:image" content="https://bandeanl.github.io/AndreaBandean/index/images/Portrait.jpg">
-<link rel="icon" type="image/png" href="index/images/Portrait.jpg">  
 </head>
 <body>
   <!-- Navigation -->
@@ -495,6 +494,57 @@
 
       document.documentElement.lang = lang;
     }
+  </script>
+
+<!-- 🎄 Christmas Snow Effect (Cool White Theme) -->
+  <style>
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: #ffffff;
+      font-size: 1.2em;
+      user-select: none;
+      pointer-events: none;
+      z-index: 9999;
+      text-shadow: 0 0 8px rgba(255,255,255,0.8);
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0.8; }
+    }
+
+    /* Subtle icy glow instead of red-green */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top left, rgba(200, 220, 255, 0.15), transparent 70%),
+                  radial-gradient(circle at bottom right, rgba(180, 240, 255, 0.15), transparent 70%);
+      z-index: 0;
+    }
+  </style>
+
+  <script>
+    // Gentle snow effect
+    const snowContainer = document.createElement('div');
+    document.body.appendChild(snowContainer);
+
+    function createSnowflake() {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+      snowflake.textContent = '❄';
+      snowflake.style.left = Math.random() * window.innerWidth + 'px';
+      snowflake.style.animationDuration = 6 + Math.random() * 6 + 's';
+      snowflake.style.opacity = 0.6 + Math.random() * 0.4;
+      snowflake.style.fontSize = (10 + Math.random() * 20) + 'px';
+      snowContainer.appendChild(snowflake);
+      setTimeout(() => snowflake.remove(), 12000);
+    }
+
+    setInterval(createSnowflake, 250);
   </script>
 </body>
 </html>
