@@ -546,5 +546,16 @@
 
     setInterval(createSnowflake, 250);
   </script>
+ <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("lang");
+
+    // If a lang parameter exists and is supported, load it:
+    if (lang && ["de", "en", "hu", "ro"].includes(lang)) {
+      setLanguage(lang);
+    }
+  });
+</script>
 </body>
 </html>
