@@ -182,6 +182,29 @@
         font-size: 1rem;
       }
     }
+
+    /* ========================================= */
+    /* 💗🌸 Hearts + Flowers falling effect (NEW) */
+    /* ========================================= */
+    .hf {
+      position: fixed;
+      top: -24px;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 14px; /* small */
+      opacity: 0.95;
+      transform: translate3d(0,0,0) rotate(0deg);
+      animation: hfFall linear forwards;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.12));
+      user-select: none;
+    }
+
+    @keyframes hfFall {
+      0%   { transform: translate3d(var(--x), -20px, 0) rotate(0deg); opacity: 0.95; }
+      100% { transform: translate3d(calc(var(--x) + var(--drift)), 110vh, 0) rotate(var(--rot)); opacity: 0.9; }
+    }
   </style>
 
   <!-- SEO: dynamic per-language meta description -->
@@ -229,6 +252,7 @@
       });
     })();
   </script>
+
 <link rel="alternate" hreflang="de" href="https://bandeanl.github.io/AndreaBandean/?lang=de" />
 <link rel="alternate" hreflang="en" href="https://bandeanl.github.io/AndreaBandean/?lang=en" />
 <link rel="alternate" hreflang="hu" href="https://bandeanl.github.io/AndreaBandean/?lang=hu" />
@@ -237,7 +261,7 @@
 <!-- Open Graph Meta Tags -->
 <meta property="og:title" content="Andrea Bandean – Klavierunterricht">
 <meta property="og:description" content="Klavierunterricht in der Region Stuttgart – Individuelle Lektionen für Kinder, Jugendliche & Erwachsene">
-<meta property="og:image" content="https://bandeanl.github.io/AndreaBandean/index/images/Portrait.jpg">
+<meta property="og:image" content="https://bandeanl.github.io/AndreaBandean/index/images/AndiPiano.jpeg">
 <meta property="og:url" content="https://bandeanl.github.io/AndreaBandean/">
 <meta property="og:type" content="website">
 
@@ -245,7 +269,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Andrea Bandean – Klavierunterricht">
 <meta name="twitter:description" content="Persönlicher Klavierunterricht mit Andrea Bandean – Klassik, Pop & Filmmusik für alle Altersgruppen">
-<meta name="twitter:image" content="https://bandeanl.github.io/AndreaBandean/index/images/Portrait.jpg">
+<meta name="twitter:image" content="https://bandeanl.github.io/AndreaBandean/index/images/AndiPiano.jpeg">
 </head>
 <body>
   <!-- Navigation -->
@@ -277,7 +301,7 @@
         <h2 id="mainTitle">Andrea Bandean – Klavierlehrerin</h2>
         <h3 id="mainSubtitle">Individueller Klavierunterricht für Kinder, Jugendliche & Erwachsene</h3>
       </hgroup>
-      <img src="index/images/Portrait.jpg" alt="Portrait von Andrea Bandean" class="portrait">
+      <img src="index/images/AndiPiano.jpeg" alt="Portrait von Andrea Bandean" class="portrait">
       <p id="introText"><strong>Andrea Bandean-Gombkötő</strong> ist eine leidenschaftliche und engagierte Klavierpädagogin mit über 20 Jahren Erfahrung.</p>
       <h3 id="aboutHeading">Über mich</h3>
       <p id="aboutText">Geboren in Siebenbürgen (Târgu Mureș, Rumänien), habe ich früh meinen Weg zur Musik – und besonders zum Klavier – gefunden. Nach meinem abgeschlossenen Musikstudium mit Hauptfach Klavier an der Universität Oradea sowie einem Masterabschluss in Bildungsmanagement konnte ich meine Leidenschaft zum Beruf machen.</p>
@@ -290,7 +314,7 @@
       </div>
       <ul>
         <li id="offer1">🎹 Klavierunterricht für Anfänger bis Fortgeschrittene</li>
-        <li id="offer2">🎶 Neben klassischer Musik auch Weihnachtslieder, Pop- und Filmmusik</strong></li>
+        <li id="offer2">🎶 Neben klassischer Musik auch Pop- und Filmmusik</strong></li>
         <li id="offer3">👧👦 Musikalische Früherziehung für Kinder in spielerischer Form</li>
         <li id="offer4">🎼 Vorbereitung auf Konzerte, Prüfungen und Wettbewerbe</li>
         <li id="offer5">🎤 Gemeinsames Musizieren, Improvisation und Liedbegleitung</li>
@@ -342,12 +366,13 @@
       <h3 id="pricesSubtitle">Flexible Unterrichtsmöglichkeiten</h3>
     </hgroup>
     <ul class="price-list">
-      <li id="price1">🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>30 €</strong> 10er Pack: <strong>280 €</strong> </li>
-      <li id="price2">🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>37 €</strong> 10er Pack: <strong>350 €</strong></li>
-      <li id="price3">🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>24 €</strong> 10er Pack: <strong>220 €</strong> </li>
-      <li id="price4">🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>32 €</strong> 10er Pack: <strong>300 €</strong></li>
-      <li id="price5">🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>22 €</strong> 10er Pack: <strong>200 €</strong> </li>
-      <li id="price6">🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>27 €</strong> 10er Pack: <strong>250 €</strong></li>
+      <li id="price0">Die erste Schnupperstunde ist kostenlos.</li>
+      <li id="price1">🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>25 €</strong> 10er Pack: <strong>230 €</strong> </li>
+      <li id="price2">🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>30 €</strong> 10er Pack: <strong>250 €</strong></li>
+      <li id="price3">🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>20 €</strong> 10er Pack: <strong>180 €</strong> </li>
+      <li id="price4">🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>25 €</strong> 10er Pack: <strong>200 €</strong></li>
+      <li id="price5">🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>18 €</strong> 10er Pack: <strong>160 €</strong> </li>
+      <li id="price6">🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>20 €</strong> 10er Pack: <strong>180 €</strong></li>
       <li id="price7">Der Unterricht kann je nach Wunsch des Schülers in Deutsch, Ungarisch, Rumänisch oder Englisch stattfinden.</li>
       <li id="price8">Aufgrund der Umsatzsteuerbefreiung gem. § 4 Nr. 21 a) bb) UStG erhebe ich keine Umsatzsteuer und weise diese daher auch nicht aus.</li>	
     </ul>
@@ -386,12 +411,13 @@
         videoTitle:"Auftrittsvideos", videoSubtitle:"Einblicke in meine Konzerte",
         photoTitle:"Fotos", photoSubtitle:"Momente aus Unterricht & Auftritten",
         pricesTitle:"Preise", pricesSubtitle:"Flexible Unterrichtsmöglichkeiten", 
-        price1:"🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>30 €</strong> 10er Pack: <strong>280 €</strong>", 
-        price2:"🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>37 €</strong> 10er Pack: <strong>350 €</strong>",
-        price3:"🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>24 €</strong> 10er Pack: <strong>220 €</strong>", 
-        price4:"🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>32 €</strong> 10er Pack: <strong>300 €</strong>",
-        price5:"🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>22 €</strong> 10er Pack: <strong>200 €</strong>", 
-        price6:"🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>27 €</strong> 10er Pack: <strong>250 €</strong>",
+        price0: "Die erste Schnupperstunde ist kostenlos.",
+        price1:"🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>25 €</strong> 10er Pack: <strong>230 €</strong>", 
+        price2:"🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>30 €</strong> 10er Pack: <strong>250 €</strong>",
+        price3:"🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>20 €</strong> 10er Pack: <strong>180 €</strong>", 
+        price4:"🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>25 €</strong> 10er Pack: <strong>200 €</strong>",
+        price5:"🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>18 €</strong> 10er Pack: <strong>160 €</strong>", 
+        price6:"🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>20 €</strong> 10er Pack: <strong>180 €</strong>",
         price7: "Der Unterricht kann je nach Wunsch des Schülers in Deutsch, Ungarisch, Rumänisch oder Englisch stattfinden.", 
         price8: "Aufgrund der Umsatzsteuerbefreiung gem. § 4 Nr. 21 a) bb) UStG erhebe ich keine Umsatzsteuer und weise diese daher auch nicht aus.",
         contactTitle:"Kontakt", contactSubtitle:"Schreiben Sie mir für Probestunden oder Fragen", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen",
@@ -403,18 +429,19 @@
         mainTitle:"Andrea Bandean – Piano Teacher", mainSubtitle:"Personalized Piano Lessons for Children, Teens & Adults",
         introText:"<strong>Andrea Bandean-Gombkötő</strong> is a passionate and dedicated piano teacher with over 20 years of experience.",
         aboutHeading:"About Me", aboutText:"Born in Transylvania (Târgu Mureș, Romania), I found my path to music – especially the piano – at an early age. After completing my music studies with piano as my main subject at the University of Oradea and a Master's degree in Educational Management, I was able to turn my passion into a profession.",
-        offerHeading:"My Offer", offer1:"🎹 Piano lessons for beginners to advanced", offer2:"<strong>🎶 Besides classical music also Christmas songs, pop, and film music</strong>", offer3:"👧👦 Musical early education for children in a playful way", offer4:"🎼 Preparation for concerts, exams, and competitions", offer5:"🎤 Making music together, improvisation, and song accompaniment",
+        offerHeading:"My Offer", offer1:"🎹 Piano lessons for beginners to advanced", offer2:"<strong>🎶 Besides classical music also pop, and film music</strong>", offer3:"👧👦 Musical early education for children in a playful way", offer4:"🎼 Preparation for concerts, exams, and competitions", offer5:"🎤 Making music together, improvisation, and song accompaniment",
         focusHeading:"My Focus", focusText:"Every student is unique – that’s why I place great value on individual support, patience, and joy in making music. Whether you’re sitting at the piano for the first time or already pursuing concrete goals – I’ll be happy to accompany you on your musical journey.",
         philosophyHeading:"My Philosophy", philosophyText:"“Music begins where words end.”<br> For me, music is a universal language that touches the heart, shapes the personality, and brings joy for a lifetime.",
         videoTitle:"Performance Videos", videoSubtitle:"Insights into my concerts",
         photoTitle:"Photos", photoSubtitle:"Moments from lessons & performances",
-        pricesTitle:"Prices", pricesSubtitle:"Flexible lesson options", 
-        price1:"🎹 1 hour (60 Min) lesson in studio: <strong>30 €</strong>  10 lessons: <strong>280 €</strong>", 
-        price2:"🏠 1 hour (60 Min) lesson at student's home: <strong>37 €</strong> 10 lessons: <strong>350 €</strong>", 
-        price3:"🎹 1 hour (45 Min) lesson in studio: <strong>24 €</strong>  10 lessons: <strong>220 €</strong>", 
-        price4:"🏠 1 hour (45 Min) lesson at student's home: <strong>32 €</strong> 10 lessons: <strong>300 €</strong>", 
-        price5:"🎹 1 hour (30 Min) lesson in studio: <strong>22 €</strong>  10 lessons: <strong>200 €</strong>", 
-        price6:"🏠 1 hour (30 Min) lesson at student's home: <strong>27 €</strong> 10 lessons: <strong>250 €</strong>", 
+        pricesTitle:"Prices", pricesSubtitle:"Flexible lesson options",
+        price0: "The first lesson (trial lesson) is free of charge.", 
+        price1:"🎹 1 hour (60 Min) lesson in studio: <strong>25 €</strong>  10 lessons: <strong>230 €</strong>", 
+        price2:"🏠 1 hour (60 Min) lesson at student's home: <strong>30 €</strong> 10 lessons: <strong>250 €</strong>", 
+        price3:"🎹 1 hour (45 Min) lesson in studio: <strong>20 €</strong>  10 lessons: <strong>180 €</strong>", 
+        price4:"🏠 1 hour (45 Min) lesson at student's home: <strong>25 €</strong> 10 lessons: <strong>200 €</strong>", 
+        price5:"🎹 1 hour (30 Min) lesson in studio: <strong>18 €</strong>  10 lessons: <strong>160 €</strong>", 
+        price6:"🏠 1 hour (30 Min) lesson at student's home: <strong>20 €</strong> 10 lessons: <strong>180 €</strong>", 
         price7: "Lessons can be held in German, Hungarian, Romanian, or English, depending on the student's preference.", 
         price8: "Due to VAT exemption according to § 4 No. 21 a) bb) UStG, I do not charge VAT and therefore do not list it on invoices.",
         contactTitle:"Contact", contactSubtitle:"Write to me for trial lessons or questions", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen",
@@ -426,18 +453,19 @@
         mainTitle:"Andrea Bandean – Zongoratanár", mainSubtitle:"Személyre szabott zongoraórák gyerekeknek, tiniknek és felnőtteknek",
         introText:"<strong>Andrea Bandean-Gombkötő</strong> szenvedélyes és elhivatott zongoratanár több mint 20 év tapasztalattal.",
         aboutHeading:"Rólam", aboutText:"Erdélyben (Marosvásárhely, Románia) születtem, és már korán rátaláltam a zenére – különösen a zongorára. A Nagyváradi Egyetemen végeztem zenei tanulmányaimat zongora szakon, majd oktatásmenedzsmentből mesterdiplomát szereztem, így a szenvedélyem a hivatásommá vált.",
-        offerHeading:"Ajánlatom", offer1:"🎹 Zongoraórák kezdőtől haladó szintig", offer2:"<strong>🎶 Klasszikus zene mellett karácsonyi dalok, pop és filmzene</strong>", offer3:"👧👦 Zenei előképzés gyermekeknek játékos formában", offer4:"🎼 Felkészítés koncertekre, vizsgákra és versenyekre", offer5:"🎤 Közös zenélés, improvizáció és kíséret",
+        offerHeading:"Ajánlatom", offer1:"🎹 Zongoraórák kezdőtől haladó szintig", offer2:"<strong>🎶 Klasszikus zene mellett pop és filmzene</strong>", offer3:"👧👦 Zenei előképzés gyermekeknek játékos formában", offer4:"🎼 Felkészítés koncertekre, vizsgákra és versenyekre", offer5:"🎤 Közös zenélés, improvizáció és kíséret",
         focusHeading:"Fókuszom", focusText:"Minden tanuló egyedi – ezért nagy hangsúlyt fektetek az egyéni fejlődésre, a türelemre és az örömteli zenélésre. Akár először ülsz a zongoránál, akár konkrét célokat követsz – örömmel kísérlek zenei utadon.",
         philosophyHeading:"Filozófiám", philosophyText:"„A zene ott kezdődik, ahol a szavak véget érnek.”<br> Számomra a zene egyetemes nyelv, amely megérinti a szívet, formálja a személyiséget és egy életen át örömet ad.",
         videoTitle:"Előadásvideók", videoSubtitle:"Bepillantás a koncertjeimbe",
         photoTitle:"Fotók", photoSubtitle:"Pillanatok az órákról és előadásokról",
         pricesTitle:"Árak", pricesSubtitle:"Rugalmas oktatási lehetőségek", 
-        price1:"🎹 1 óra (60 perc) oktatás stúdióban: <strong>30 €</strong> 10es csomag: <strong>280 €</strong>", 
-        price2:"🏠 1 óra (60 perc) oktatás a tanuló otthonában: <strong>37 €</strong> 10es csomag: <strong>350 €</strong>",
-        price3:"🎹 1 óra (45 perc) oktatás stúdióban: <strong>24 €</strong> 10es csomag: <strong>220 €</strong>", 
-        price4:"🏠 1 óra (45 perc) oktatás a tanuló otthonában: <strong>32 €</strong> 10es csomag: <strong>300 €</strong>",  
-        price5:"🎹 1 óra (30 perc) oktatás stúdióban: <strong>22 €</strong> 10es csomag: <strong>200 €</strong>", 
-        price6:"🏠 1 óra (30 perc) oktatás a tanuló otthonában: <strong>27 €</strong> 10es csomag: <strong>250 €</strong>", 
+        price0: "Az első óra (próbaóra) ingyenes.",
+        price1:"🎹 1 óra (60 perc) oktatás stúdióban: <strong>25 €</strong> 10es csomag: <strong>230 €</strong>", 
+        price2:"🏠 1 óra (60 perc) oktatás a tanuló otthonában: <strong>30 €</strong> 10es csomag: <strong>250 €</strong>",
+        price3:"🎹 1 óra (45 perc) oktatás stúdióban: <strong>20 €</strong> 10es csomag: <strong>180 €</strong>", 
+        price4:"🏠 1 óra (45 perc) oktatás a tanuló otthonában: <strong>25 €</strong> 10es csomag: <strong>200 €</strong>",  
+        price5:"🎹 1 óra (30 perc) oktatás stúdióban: <strong>18 €</strong> 10es csomag: <strong>160 €</strong>", 
+        price6:"🏠 1 óra (30 perc) oktatás a tanuló otthonában: <strong>20 €</strong> 10es csomag: <strong>180 €</strong>", 
         price7: "Az órák a diák kívánsága szerint német, magyar, román vagy angol nyelven is tarthatók.", 
         price8: "A német adótörvény § 4 Nr. 21 a) bb) UStG pontja alapján az oktatás áfamentes, így áfát nem számítok fel és nem is tüntetek fel.",
         contactTitle:"Kapcsolat", contactSubtitle:"Írjon nekem próbaórákért vagy kérdésekért", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen",
@@ -449,18 +477,19 @@
         mainTitle:"Andrea Bandean – Profesor de pian", mainSubtitle:"Lecții personalizate de pian pentru copii, adolescenți și adulți",
         introText:"<strong>Andrea Bandean-Gombkötő</strong> este o profesoară de pian pasionată și dedicată, cu peste 20 de ani de experiență.",
         aboutHeading:"Despre mine", aboutText:"M-am născut în Transilvania (Târgu Mureș, România) și am descoperit devreme drumul către muzică – și mai ales către pian. După finalizarea studiilor muzicale cu specializarea pian la Universitatea din Oradea și obținerea unui master în management educațional, am reușit să transform pasiunea mea în profesie.",
-        offerHeading:"Ofertele mele", offer1:"🎹 Lecții de pian pentru începători până la avansați", offer2:"<strong>🎶 Pe lângă muzica clasică, colinde, muzică pop și de film</strong>", offer3:"👧👦 Educație muzicală timpurie pentru copii într-o formă jucăușă", offer4:"🎼 Pregătire pentru concerte, examene și concursuri", offer5:"🎤 Cântat împreună, improvizație și acompaniament",
+        offerHeading:"Ofertele mele", offer1:"🎹 Lecții de pian pentru începători până la avansați", offer2:"<strong>🎶 Pe lângă muzica clasică, muzică pop și de film</strong>", offer3:"👧👦 Educație muzicală timpurie pentru copii într-o formă jucăușă", offer4:"🎼 Pregătire pentru concerte, examene și concursuri", offer5:"🎤 Cântat împreună, improvizație și acompaniament",
         focusHeading:"Focusul meu", focusText:"Fiecare elev este unic – de aceea pun mare preț pe sprijin individual, răbdare și bucuria de a face muzică. Indiferent dacă stai pentru prima dată la pian sau ai deja obiective clare – te voi însoți cu drag pe drumul tău muzical.",
         philosophyHeading:"Filozofia mea", philosophyText:"„Muzica începe acolo unde cuvintele se termină.”<br> Pentru mine, muzica este un limbaj universal care atinge inima, formează personalitatea și oferă bucurie o viață întreagă.",
         videoTitle:"Videoclipuri de spectacol", videoSubtitle:"O privire în concertele mele",
         photoTitle:"Fotografii", photoSubtitle:"Momente din lecții și spectacole",
         pricesTitle:"Prețuri", pricesSubtitle:"Opțiuni flexibile de lecții", 
-        price1:"🎹 1 oră (60min) de lecție în studio: <strong>30 €</strong>  10 ore: <strong>280 €</strong>", 
-        price2:"🏠 1 oră (60min) de lecție la domiciliul elevului: <strong>37 €</strong> 10 ore ore: <strong>330 €</strong>", 
-        price3:"🎹 1 oră (45min) de lecție în studio: <strong>24 €</strong>  10 ore: <strong>220 €</strong>", 
-        price4:"🏠 1 oră (45min) de lecție la domiciliul elevului: <strong>32 €</strong> 10 ore ore: <strong>300 €</strong>",
-        price5:"🎹 1 oră (30min) de lecție în studio: <strong>22 €</strong>  10 ore: <strong>200 €</strong>", 
-        price6:"🏠 1 oră (30min) de lecție la domiciliul elevului: <strong>27 €</strong> 10 ore ore: <strong>250 €</strong>",
+        price0: "Prima lecție (lecție de probă) este gratuită.",
+        price1:"🎹 1 oră (60min) de lecție în studio: <strong>25 €</strong>  10 ore: <strong>230 €</strong>", 
+        price2:"🏠 1 oră (60min) de lecție la domiciliul elevului: <strong>30 €</strong> 10 ore ore: <strong>250 €</strong>", 
+        price3:"🎹 1 oră (45min) de lecție în studio: <strong>20 €</strong>  10 ore: <strong>180 €</strong>", 
+        price4:"🏠 1 oră (45min) de lecție la domiciliul elevului: <strong>25 €</strong> 10 ore ore: <strong>200 €</strong>",
+        price5:"🎹 1 oră (30min) de lecție în studio: <strong>18 €</strong>  10 ore: <strong>160 €</strong>", 
+        price6:"🏠 1 oră (30min) de lecție la domiciliul elevului: <strong>20 €</strong> 10 ore ore: <strong>180 €</strong>",
         price7: "Lecțiile pot fi susținute în germană, maghiară, română sau engleză, în funcție de preferința elevului.", 
         price8: "Conform scutirii de TVA prevăzute la § 4 Nr. 21 a) bb) UStG, nu percep TVA și, prin urmare, nu îl afișez pe facturi.",
         contactTitle:"Contact", contactSubtitle:"Scrieți-mi pentru lecții de probă sau întrebări", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen",
@@ -474,7 +503,7 @@
       "offerHeading","offer1","offer2","offer3","offer4","offer5",
       "focusHeading","focusText","philosophyHeading","philosophyText",
       "videoTitle","videoSubtitle","photoTitle","photoSubtitle",
-      "pricesTitle","pricesSubtitle","price1","price2","price3","price4","price5","price6","price7","price8",
+      "pricesTitle","pricesSubtitle","price0","price1","price2","price3","price4","price5","price6","price7","price8",
       "contactTitle","contactSubtitle","contactText","footerText"
     ];
 
@@ -496,66 +525,38 @@
     }
   </script>
 
-<!-- 🎄 Christmas Snow Effect (Cool White Theme) -->
-  <style>
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      color: #ffffff;
-      font-size: 1.2em;
-      user-select: none;
-      pointer-events: none;
-      z-index: 9999;
-      text-shadow: 0 0 8px rgba(255,255,255,0.8);
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0.8; }
-    }
-
-    /* Subtle icy glow instead of red-green */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at top left, rgba(200, 220, 255, 0.15), transparent 70%),
-                  radial-gradient(circle at bottom right, rgba(180, 240, 255, 0.15), transparent 70%);
-      z-index: 0;
-    }
-  </style>
-
+  <!-- 💗🌸 Hearts + Flowers Effect (replaces ribbons/confetti/snow) -->
   <script>
-    // Gentle snow effect
-    const snowContainer = document.createElement('div');
-    document.body.appendChild(snowContainer);
+    const hfItems = ["💗","💖","💜","💞","🌸","🌼","🌷","💐","🌺","🪻"];
+    function rand(min, max){ return min + Math.random() * (max - min); }
+    function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
 
-    function createSnowflake() {
-      const snowflake = document.createElement('div');
-      snowflake.classList.add('snowflake');
-      snowflake.textContent = '❄';
-      snowflake.style.left = Math.random() * window.innerWidth + 'px';
-      snowflake.style.animationDuration = 6 + Math.random() * 6 + 's';
-      snowflake.style.opacity = 0.6 + Math.random() * 0.4;
-      snowflake.style.fontSize = (10 + Math.random() * 20) + 'px';
-      snowContainer.appendChild(snowflake);
-      setTimeout(() => snowflake.remove(), 12000);
+    function createHF() {
+      const el = document.createElement("div");
+      el.className = "hf";
+      el.textContent = pick(hfItems);
+
+      // small sizes
+      const size = rand(12, 18);
+      el.style.fontSize = size + "px";
+
+      // position + motion
+      const x = Math.round(rand(0, window.innerWidth));
+      el.style.setProperty("--x", x + "px");
+      el.style.setProperty("--drift", Math.round(rand(-70, 70)) + "px");
+      el.style.setProperty("--rot", Math.round(rand(-540, 540)) + "deg");
+
+      const dur = rand(6, 11);
+      el.style.animationDuration = dur + "s";
+
+      document.body.appendChild(el);
+
+      setTimeout(() => el.remove(), Math.ceil((dur + 1) * 1000));
     }
 
-    setInterval(createSnowflake, 250);
+    // balanced density
+    setInterval(createHF, 180);
   </script>
- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const params = new URLSearchParams(window.location.search);
-    const lang = params.get("lang");
 
-    // If a lang parameter exists and is supported, load it:
-    if (lang && ["de", "en", "hu", "ro"].includes(lang)) {
-      setLanguage(lang);
-    }
-  });
-</script>
 </body>
 </html>
