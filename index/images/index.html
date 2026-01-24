@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title id="pageTitle">Andrea Bandean – Klavierunterricht</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <style>
+    body {
+      background: url("index/piano_backreound_3.jpg") no-repeat center center fixed;
+      background-size: cover;
+      color: #2e2e2e;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.6);
+      z-index: -1;
+    }
+    main, section, footer {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 2rem;
+      border-radius: 14px;
+      margin-top: 2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+    h1, h2, h3 {
+      color: #5a189a;
+      text-shadow: none;
+    }
+    p, small, li {
+      color: #333;
+    }
+    a {
+      color: #7b2cbf;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    a:hover {
+      color: #9d4edd;
+    }
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 14px;
+      padding: 1rem 2rem;
+      margin-top: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    nav ul:first-child {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+    }
+    nav a {
+      color: #5a189a;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #9d4edd;
+    }
+    /* Flags below title */
+    nav .title-flags {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.3rem;
+    }
+    nav .title-flags strong {
+      font-size: 1.2rem;
+    }
+    nav .title-flags .flags {
+      margin-top: 0.2rem;
+      display: flex;
+      gap: 0.3rem;
+    }
+    .flags img {
+      width: 26px;
+      height: 18px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      transition: transform 0.2s;
+    }
+    .flags img:hover {
+      transform: scale(1.1);
+    }
+    .portrait {
+      float: left;
+      max-width: 220px;
+      margin: 0 1.5rem 1rem 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .video-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:1.2rem;
+    }
+    .video-grid iframe {
+      width:100%;
+      height:200px;
+      border-radius:12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .video-grid iframe:hover {
+      transform: scale(1.03);
+    }
+    .photo-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:1.2rem;
+    }
+    .photo-grid img {
+      border-radius:12px;
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+    .photo-grid img:hover {
+      transform: scale(1.05);
+    }
+    .price-list {
+      list-style: none;
+      padding-left: 1rem;
+      margin-top: 1rem;
+      font-size: 1.15rem;
+    }
+    .price-list li {
+      margin: 0.6rem 0;
+      padding-left: 0.6rem;
+      border-left: 4px solid #9d4edd;
+    }
+    .price-list strong {
+      color: #5a189a;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #444;
+    }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      nav ul:first-child {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+      }
+      .portrait {
+        float: none;
+        display: block;
+        margin: 0 auto 1.5rem auto;
+      }
+      main, section, footer {
+        padding: 1.2rem;
+      }
+      h2 {
+        font-size: 1.4rem;
+      }
+      h3 {
+        font-size: 1rem;
+      }
+    }
+
+    /* ========================================= */
+    /* 💗🌸 Hearts + Flowers falling effect (NEW) */
+    /* ========================================= */
+    .hf {
+      position: fixed;
+      top: -24px;
+      left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      font-size: 14px; /* small */
+      opacity: 0.95;
+      transform: translate3d(0,0,0) rotate(0deg);
+      animation: hfFall linear forwards;
+      will-change: transform, opacity;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.12));
+      user-select: none;
+    }
+
+    @keyframes hfFall {
+      0%   { transform: translate3d(var(--x), -20px, 0) rotate(0deg); opacity: 0.95; }
+      100% { transform: translate3d(calc(var(--x) + var(--drift)), 110vh, 0) rotate(var(--rot)); opacity: 0.9; }
+    }
+  </style>
+
+  <!-- SEO: dynamic per-language meta description -->
+  <script>
+    (function() {
+      var descriptions = {
+        de: "Klavier Markgröningen, Klavierunterricht in Unterriexingen, Markgröningen, Ludwigsburg, Renningen, Leonberg, Vaihingen an der Enz und Stuttgart – Andrea Bandean, erfahrene Klavierlehrerin für Kinder, Jugendliche und Erwachsene. Klassik, Pop & Filmmusik.",
+        en: "Piano Markgröningen, Ludwigsburg, Sachsenheim, Vaihingen an der Enz,  Piano lessons in the Stuttgart area (Unterriexingen, Markgröningen, Ludwigsburg, Renningen, Leonberg) with Andrea Bandean — experienced teacher for children, teens and adults. Classical, pop & film music.",
+        hu: "Zongora Stuttgart, Zongora Ludwigsburg, Vaihingen an der Enz,Zongoraórák a stuttgarti régióban (Unterriexingen, Markgröningen, Ludwigsburg, Renningen, Leonberg, Sachsenheim) — Andrea Bandean tapasztalt zongoratanár gyerekeknek, tiniknek és felnőtteknek. Klasszikus, pop és filmzene.",
+        ro: "Pian Stuttgart, Pian Ludwigsburg, Lecții de pian în zona Stuttgart (Unterriexingen, Markgröningen, Ludwigsburg, Renningen, Leonberg, Vaihingen an der Enz, Sachsenheim) cu Andrea Bandean — profesoară cu experiență pentru copii, adolescenți și adulți. Muzică clasică, pop și de film."
+      };
+
+      function getLangFromUrlOrHtml() {
+        try {
+          var p = new URLSearchParams(location.search);
+          if (p.get('lang')) return p.get('lang');
+        } catch(e) {}
+        var htmlEl = document.documentElement;
+        return (htmlEl && htmlEl.lang) ? htmlEl.lang : 'de';
+      }
+
+      function updateMetaDescription(lang) {
+        var meta = document.querySelector('meta[name="description"]');
+        if (!meta) {
+          meta = document.createElement('meta');
+          meta.setAttribute('name', 'description');
+          document.head.appendChild(meta);
+        }
+        var text = descriptions[lang] || descriptions.de;
+        meta.setAttribute('content', text);
+      }
+
+      // Patch existing setLanguage if exists so meta description follows language
+      var orig = window.setLanguage;
+      if (typeof orig === 'function') {
+        window.setLanguage = function(lang) {
+          try { orig(lang); } catch(e) {}
+          updateMetaDescription(lang);
+        };
+      }
+
+      // Initialize on load
+      document.addEventListener('DOMContentLoaded', function() {
+        updateMetaDescription(getLangFromUrlOrHtml());
+      });
+    })();
+  </script>
+
+<link rel="alternate" hreflang="de" href="https://bandeanl.github.io/AndreaBandean/?lang=de" />
+<link rel="alternate" hreflang="en" href="https://bandeanl.github.io/AndreaBandean/?lang=en" />
+<link rel="alternate" hreflang="hu" href="https://bandeanl.github.io/AndreaBandean/?lang=hu" />
+<link rel="alternate" hreflang="ro" href="https://bandeanl.github.io/AndreaBandean/?lang=ro" />
+<link rel="alternate" hreflang="x-default" href="https://bandeanl.github.io/AndreaBandean/" />
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Andrea Bandean – Klavierunterricht">
+<meta property="og:description" content="Klavierunterricht in der Region Stuttgart – Individuelle Lektionen für Kinder, Jugendliche & Erwachsene">
+<meta property="og:image" content="https://bandeanl.github.io/AndreaBandean/index/images/AndiPiano.jpeg">
+<meta property="og:url" content="https://bandeanl.github.io/AndreaBandean/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Andrea Bandean – Klavierunterricht">
+<meta name="twitter:description" content="Persönlicher Klavierunterricht mit Andrea Bandean – Klassik, Pop & Filmmusik für alle Altersgruppen">
+<meta name="twitter:image" content="https://bandeanl.github.io/AndreaBandean/index/images/AndiPiano.jpeg">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="container-fluid">
+    <ul class="title-flags">
+      <li>
+        <strong id="siteTitle">Klavierunterricht</strong>
+        <div class="flags">
+          <img src="https://flagcdn.com/w20/de.png" alt="Deutsch" onclick="setLanguage('de')">
+          <img src="https://flagcdn.com/w20/hu.png" alt="Magyar" onclick="setLanguage('hu')">
+          <img src="https://flagcdn.com/w20/ro.png" alt="Română" onclick="setLanguage('ro')">
+          <img src="https://flagcdn.com/w20/gb.png" alt="English" onclick="setLanguage('en')">
+        </div>
+      </li>
+    </ul>
+    <ul>
+      <li><a href="#ueber" id="navAbout">Über mich</a></li>
+      <li><a href="#videos" id="navVideos">Videos</a></li>
+      <li><a href="#fotos" id="navPhotos">Fotos</a></li>
+      <li><a href="#preise" id="navPrices">Preise</a></li>
+      <li><a href="#kontakt" role="button" id="navContact">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <!-- Über mich -->
+  <main class="container">
+    <section id="ueber">
+      <hgroup>
+        <h2 id="mainTitle">Andrea Bandean – Klavierlehrerin</h2>
+        <h3 id="mainSubtitle">Individueller Klavierunterricht für Kinder, Jugendliche & Erwachsene</h3>
+      </hgroup>
+      <img src="index/images/AndiPiano.jpeg" alt="Portrait von Andrea Bandean" class="portrait">
+      <p id="introText"><strong>Andrea Bandean-Gombkötő</strong> ist eine leidenschaftliche und engagierte Klavierpädagogin mit über 20 Jahren Erfahrung.</p>
+      <h3 id="aboutHeading">Über mich</h3>
+      <p id="aboutText">Geboren in Siebenbürgen (Târgu Mureș, Rumänien), habe ich früh meinen Weg zur Musik – und besonders zum Klavier – gefunden. Nach meinem abgeschlossenen Musikstudium mit Hauptfach Klavier an der Universität Oradea sowie einem Masterabschluss in Bildungsmanagement konnte ich meine Leidenschaft zum Beruf machen.</p>
+      <h3 id="offerHeading">Mein Angebot</h3>
+
+      <div class="photo-grid">
+  	<img src="index/images/Methoden/method-05.jpg" alt="Methode 05">
+  	<img src="index/images/Methoden/method-15.jpg" alt="Methode 15">
+  	<img src="index/images/Methoden/method-03.jpg" alt="Methode 03">
+      </div>
+      <ul>
+        <li id="offer1">🎹 Klavierunterricht für Anfänger bis Fortgeschrittene</li>
+        <li id="offer2">🎶 Neben klassischer Musik auch Pop- und Filmmusik</strong></li>
+        <li id="offer3">👧👦 Musikalische Früherziehung für Kinder in spielerischer Form</li>
+        <li id="offer4">🎼 Vorbereitung auf Konzerte, Prüfungen und Wettbewerbe</li>
+        <li id="offer5">🎤 Gemeinsames Musizieren, Improvisation und Liedbegleitung</li>
+      </ul>
+      <div class="photo-grid">
+  	<img src="index/images/Methoden/method-01.jpg" alt="Methode 01">
+  	<img src="index/images/Methoden/method-06.jpg" alt="Methode 06">
+  	<img src="index/images/Methoden/method-08.jpg" alt="Methode 08">
+      </div>
+      <h3 id="focusHeading">Mein Fokus</h3>
+      <p id="focusText">Jeder Schüler ist einzigartig – deshalb lege ich großen Wert auf individuelle Förderung, Geduld und Freude am Musizieren. Ob Du zum ersten Mal am Klavier sitzt oder bereits konkrete Ziele verfolgst – ich begleite Dich gerne auf Deinem musikalischen Weg.</p>
+      <h3 id="philosophyHeading">Meine Philosophie</h3>
+      <p id="philosophyText">„Musik beginnt dort, wo Worte enden.“<br> Musik ist für mich eine universelle Sprache, die das Herz berührt, die Persönlichkeit formt und ein Leben lang Freude schenkt.</p>
+    </section>
+  </main>
+
+  <!-- Videos -->
+  <section id="videos" class="container">
+    <hgroup>
+      <h2 id="videoTitle">Auftrittsvideos</h2>
+      <h3 id="videoSubtitle">Einblicke in meine Konzerte</h3>
+    </hgroup>
+    <div class="video-grid">
+      <iframe src="https://drive.google.com/file/d/1cD8Rsd3pDd33FQSH-D0hwtlh7Cv8kHK3/preview"></iframe>
+      <iframe src="https://drive.google.com/file/d/1_aYhj4SQ6J1etmuyasNGz5GYHkUEKo3X/preview"></iframe>
+      <iframe src="https://drive.google.com/file/d/1eGIw1I57mRQR83Wks-b08cFV7uuwLAtI/preview"></iframe>
+      <iframe src="https://drive.google.com/file/d/1vFPFc-noV5PSNGh5UsbN131YixRXSGdR/preview"></iframe>      
+    </div>
+  </section>
+
+  <!-- Fotos -->
+  <section id="fotos" class="container">
+    <hgroup>
+      <h2 id="photoTitle">Fotos</h2>
+      <h3 id="photoSubtitle">Momente aus Unterricht & Auftritten</h3>
+    </hgroup>
+    <div class="photo-grid">
+      <img src="index/images/Andrea_piano_perf_1.jpg" alt="Andrea Piano Performance 1">
+      <img src="index/images/Andrea_piano_perf_2.jpg" alt="Andrea Piano Performance 2">
+      <img src="index/images/Andrea_piano_perf_3.jpg" alt="Andrea Piano Performance 3">
+      <img src="index/images/ArtSchool_going.jpg" alt="Klavierschule Kinder">
+    </div>
+  </section>
+
+  <!-- Preise -->
+  <section id="preise" class="container">
+    <hgroup>
+      <h2 id="pricesTitle">Preise</h2>
+      <h3 id="pricesSubtitle">Flexible Unterrichtsmöglichkeiten</h3>
+    </hgroup>
+    <ul class="price-list">
+      <li id="price0">Die erste Schnupperstunde ist kostenlos.</li>
+      <li id="price1">🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>25 €</strong> 10er Pack: <strong>230 €</strong> </li>
+      <li id="price2">🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>30 €</strong> 10er Pack: <strong>250 €</strong></li>
+      <li id="price3">🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>20 €</strong> 10er Pack: <strong>180 €</strong> </li>
+      <li id="price4">🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>25 €</strong> 10er Pack: <strong>200 €</strong></li>
+      <li id="price5">🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>18 €</strong> 10er Pack: <strong>160 €</strong> </li>
+      <li id="price6">🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>20 €</strong> 10er Pack: <strong>180 €</strong></li>
+      <li id="price7">Der Unterricht kann je nach Wunsch des Schülers in Deutsch, Ungarisch, Rumänisch oder Englisch stattfinden.</li>
+      <li id="price8">Aufgrund der Umsatzsteuerbefreiung gem. § 4 Nr. 21 a) bb) UStG erhebe ich keine Umsatzsteuer und weise diese daher auch nicht aus.</li>	
+    </ul>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class="container" aria-label="Kontakt">
+    <hgroup>
+      <h2 id="contactTitle">Kontakt</h2>
+      <h3 id="contactSubtitle">Schreiben Sie mir für Probestunden oder Fragen</h3>
+    </hgroup>
+    <p id="contactText">📧 <a href="mailto:andreabandean@aol.com">andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen</p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="container">
+    <small id="footerText">Besucherzähler</small><br>
+    <a href="https://www.hitwebcounter.com" target="_blank">
+      <img src="https://hitwebcounter.com/counter/counter.php?page=20676474&style=0030&nbdigits=7&type=ip&initCount=0"
+           title="Counter Widget" alt="Web Counter" style="border:none;" />
+    </a>
+  </footer>
+
+  <!-- Translation Script -->
+  <script>
+    const translations = {
+      de: {
+        description:"Klavier Markgröningen, Klavier Vaihingen an der Enz, Klavier Unterriexingen, Klavier Sachsenheim, Klavierunterricht in Unterriexingen, Markgröningen, Ludwigsburg, Renningen und Stuttgart – Andrea Bandean, erfahrene Klavierlehrerin für Kinder, Jugendliche und Erwachsene. Klassik, Pop & Filmmusik.",
+        pageTitle:"Andrea Bandean – Klavierunterricht", siteTitle:"Klavierunterricht", navAbout:"Über mich", navVideos:"Videos", navPhotos:"Fotos", navPrices:"Preise", navContact:"Kontakt",
+        mainTitle:"Andrea Bandean – Klavierlehrerin", mainSubtitle:"Individueller Klavierunterricht für Kinder, Jugendliche & Erwachsene",
+        introText:"<strong>Andrea Bandean-Gombkötő</strong> ist eine leidenschaftliche und engagierte Klavierpädagogin mit über 20 Jahren Erfahrung.",
+        aboutHeading:"Über mich", aboutText:"Geboren in Siebenbürgen (Târgu Mureș, Rumänien), habe ich früh meinen Weg zur Musik – und besonders zum Klavier – gefunden. Nach meinem abgeschlossenen Musikstudium mit Hauptfach Klavier an der Universität Oradea sowie einem Masterabschluss in Bildungsmanagement konnte ich meine Leidenschaft zum Beruf machen.",
+        offerHeading:"Mein Angebot", offer1:"🎹 Klavierunterricht für Anfänger bis Fortgeschrittene", offer2:"<strong>🎶 Neben klassischer Musik auch Weihnachtslieder, Pop- und Filmmusik</strong>", offer3:"👧👦 Musikalische Früherziehung für Kinder in spielerischer Form", offer4:"🎼 Vorbereitung auf Konzerte, Prüfungen und Wettbewerbe", offer5:"🎤 Gemeinsames Musizieren, Improvisation und Liedbegleitung",
+        focusHeading:"Mein Fokus", focusText:"Jeder Schüler ist einzigartig – deshalb lege ich großen Wert auf individuelle Förderung, Geduld und Freude am Musizieren. Ob Du zum ersten Mal am Klavier sitzt oder bereits konkrete Ziele verfolgst – ich begleite Dich gerne auf Deinem musikalischen Weg.",
+        philosophyHeading:"Meine Philosophie", philosophyText:"„Musik beginnt dort, wo Worte enden.“<br> Musik ist für mich eine universelle Sprache, die das Herz berührt, die Persönlichkeit formt und ein Leben lang Freude schenkt.",
+        videoTitle:"Auftrittsvideos", videoSubtitle:"Einblicke in meine Konzerte",
+        photoTitle:"Fotos", photoSubtitle:"Momente aus Unterricht & Auftritten",
+        pricesTitle:"Preise", pricesSubtitle:"Flexible Unterrichtsmöglichkeiten", 
+        price0: "Die erste Schnupperstunde ist kostenlos.",
+        price1:"🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>25 €</strong> 10er Pack: <strong>230 €</strong>", 
+        price2:"🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>30 €</strong> 10er Pack: <strong>250 €</strong>",
+        price3:"🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>20 €</strong> 10er Pack: <strong>180 €</strong>", 
+        price4:"🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>25 €</strong> 10er Pack: <strong>200 €</strong>",
+        price5:"🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>18 €</strong> 10er Pack: <strong>160 €</strong>", 
+        price6:"🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>20 €</strong> 10er Pack: <strong>180 €</strong>",
+        price7: "Der Unterricht kann je nach Wunsch des Schülers in Deutsch, Ungarisch, Rumänisch oder Englisch stattfinden.", 
+        price8: "Aufgrund der Umsatzsteuerbefreiung gem. § 4 Nr. 21 a) bb) UStG erhebe ich keine Umsatzsteuer und weise diese daher auch nicht aus.",
+        contactTitle:"Kontakt", contactSubtitle:"Schreiben Sie mir für Probestunden oder Fragen", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen",
+        footerText:"Besucherzähler"
+      },
+      en: {
+        description:"Piano Markgröningen, Piano Unterriexingen, Piano Vaihingen and der Enz, Piano Sachsenheim, Piano lessons in Unterriexingen, Markgröningen, Ludwigsburg, Renningen and Stuttgart – Andrea Bandean, experienced piano teacher for children, teens and adults. Classical, pop & film music.",
+        pageTitle:"Andrea Bandean – Piano Lessons", siteTitle:"Piano Lessons", navAbout:"About Me", navVideos:"Videos", navPhotos:"Photos", navPrices:"Prices", navContact:"Contact",
+        mainTitle:"Andrea Bandean – Piano Teacher", mainSubtitle:"Personalized Piano Lessons for Children, Teens & Adults",
+        introText:"<strong>Andrea Bandean-Gombkötő</strong> is a passionate and dedicated piano teacher with over 20 years of experience.",
+        aboutHeading:"About Me", aboutText:"Born in Transylvania (Târgu Mureș, Romania), I found my path to music – especially the piano – at an early age. After completing my music studies with piano as my main subject at the University of Oradea and a Master's degree in Educational Management, I was able to turn my passion into a profession.",
+        offerHeading:"My Offer", offer1:"🎹 Piano lessons for beginners to advanced", offer2:"<strong>🎶 Besides classical music also pop, and film music</strong>", offer3:"👧👦 Musical early education for children in a playful way", offer4:"🎼 Preparation for concerts, exams, and competitions", offer5:"🎤 Making music together, improvisation, and song accompaniment",
+        focusHeading:"My Focus", focusText:"Every student is unique – that’s why I place great value on individual support, patience, and joy in making music. Whether you’re sitting at the piano for the first time or already pursuing concrete goals – I’ll be happy to accompany you on your musical journey.",
+        philosophyHeading:"My Philosophy", philosophyText:"“Music begins where words end.”<br> For me, music is a universal language that touches the heart, shapes the personality, and brings joy for a lifetime.",
+        videoTitle:"Performance Videos", videoSubtitle:"Insights into my concerts",
+        photoTitle:"Photos", photoSubtitle:"Moments from lessons & performances",
+        pricesTitle:"Prices", pricesSubtitle:"Flexible lesson options",
+        price0: "The first lesson (trial lesson) is free of charge.", 
+        price1:"🎹 1 hour (60 Min) lesson in studio: <strong>25 €</strong>  10 lessons: <strong>230 €</strong>", 
+        price2:"🏠 1 hour (60 Min) lesson at student's home: <strong>30 €</strong> 10 lessons: <strong>250 €</strong>", 
+        price3:"🎹 1 hour (45 Min) lesson in studio: <strong>20 €</strong>  10 lessons: <strong>180 €</strong>", 
+        price4:"🏠 1 hour (45 Min) lesson at student's home: <strong>25 €</strong> 10 lessons: <strong>200 €</strong>", 
+        price5:"🎹 1 hour (30 Min) lesson in studio: <strong>18 €</strong>  10 lessons: <strong>160 €</strong>", 
+        price6:"🏠 1 hour (30 Min) lesson at student's home: <strong>20 €</strong> 10 lessons: <strong>180 €</strong>", 
+        price7: "Lessons can be held in German, Hungarian, Romanian, or English, depending on the student's preference.", 
+        price8: "Due to VAT exemption according to § 4 No. 21 a) bb) UStG, I do not charge VAT and therefore do not list it on invoices.",
+        contactTitle:"Contact", contactSubtitle:"Write to me for trial lessons or questions", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen",
+        footerText:"Visitor Counter"
+      },
+      hu: {
+        description:"Zongora Markgröningen, Zongora Stuttgart, Zongora Ludwigsburg, Zongora Sachsenheim, Tongora Vaihingen an der Enz, Zongoraórák Unterriexingen, Markgröningen, Ludwigsburg, Renningen és Stuttgartban – Andrea Bandean, tapasztalt zongoratanár gyerekeknek, tiniknek és felnőtteknek. Klasszikus, pop és filmzene.",
+        pageTitle:"Andrea Bandean – Zongoraórák", siteTitle:"Zongoraórák", navAbout:"Rólam", navVideos:"Videók", navPhotos:"Fotók", navPrices:"Árak", navContact:"Kapcsolat",
+        mainTitle:"Andrea Bandean – Zongoratanár", mainSubtitle:"Személyre szabott zongoraórák gyerekeknek, tiniknek és felnőtteknek",
+        introText:"<strong>Andrea Bandean-Gombkötő</strong> szenvedélyes és elhivatott zongoratanár több mint 20 év tapasztalattal.",
+        aboutHeading:"Rólam", aboutText:"Erdélyben (Marosvásárhely, Románia) születtem, és már korán rátaláltam a zenére – különösen a zongorára. A Nagyváradi Egyetemen végeztem zenei tanulmányaimat zongora szakon, majd oktatásmenedzsmentből mesterdiplomát szereztem, így a szenvedélyem a hivatásommá vált.",
+        offerHeading:"Ajánlatom", offer1:"🎹 Zongoraórák kezdőtől haladó szintig", offer2:"<strong>🎶 Klasszikus zene mellett pop és filmzene</strong>", offer3:"👧👦 Zenei előképzés gyermekeknek játékos formában", offer4:"🎼 Felkészítés koncertekre, vizsgákra és versenyekre", offer5:"🎤 Közös zenélés, improvizáció és kíséret",
+        focusHeading:"Fókuszom", focusText:"Minden tanuló egyedi – ezért nagy hangsúlyt fektetek az egyéni fejlődésre, a türelemre és az örömteli zenélésre. Akár először ülsz a zongoránál, akár konkrét célokat követsz – örömmel kísérlek zenei utadon.",
+        philosophyHeading:"Filozófiám", philosophyText:"„A zene ott kezdődik, ahol a szavak véget érnek.”<br> Számomra a zene egyetemes nyelv, amely megérinti a szívet, formálja a személyiséget és egy életen át örömet ad.",
+        videoTitle:"Előadásvideók", videoSubtitle:"Bepillantás a koncertjeimbe",
+        photoTitle:"Fotók", photoSubtitle:"Pillanatok az órákról és előadásokról",
+        pricesTitle:"Árak", pricesSubtitle:"Rugalmas oktatási lehetőségek", 
+        price0: "Az első óra (próbaóra) ingyenes.",
+        price1:"🎹 1 óra (60 perc) oktatás stúdióban: <strong>25 €</strong> 10es csomag: <strong>230 €</strong>", 
+        price2:"🏠 1 óra (60 perc) oktatás a tanuló otthonában: <strong>30 €</strong> 10es csomag: <strong>250 €</strong>",
+        price3:"🎹 1 óra (45 perc) oktatás stúdióban: <strong>20 €</strong> 10es csomag: <strong>180 €</strong>", 
+        price4:"🏠 1 óra (45 perc) oktatás a tanuló otthonában: <strong>25 €</strong> 10es csomag: <strong>200 €</strong>",  
+        price5:"🎹 1 óra (30 perc) oktatás stúdióban: <strong>18 €</strong> 10es csomag: <strong>160 €</strong>", 
+        price6:"🏠 1 óra (30 perc) oktatás a tanuló otthonában: <strong>20 €</strong> 10es csomag: <strong>180 €</strong>", 
+        price7: "Az órák a diák kívánsága szerint német, magyar, román vagy angol nyelven is tarthatók.", 
+        price8: "A német adótörvény § 4 Nr. 21 a) bb) UStG pontja alapján az oktatás áfamentes, így áfát nem számítok fel és nem is tüntetek fel.",
+        contactTitle:"Kapcsolat", contactSubtitle:"Írjon nekem próbaórákért vagy kérdésekért", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen",
+        footerText:"Látogatásszámláló"
+      },
+      ro: {
+        description:"Pian Stuttgart, Pian Ludwigsburg, Pian Stuttgart, Pian Sachsenheim, Pian Vaihingen an der Enz, Lecții de pian în Unterriexingen, Markgröningen, Ludwigsburg, Renningen și Stuttgart – Andrea Bandean, profesoară de pian cu experiență pentru copii, adolescenți și adulți. Muzică clasică, pop și de film.",
+        pageTitle:"Andrea Bandean – Lecții de pian", siteTitle:"Lecții de pian", navAbout:"Despre mine", navVideos:"Videoclipuri", navPhotos:"Fotografii", navPrices:"Prețuri", navContact:"Contact",
+        mainTitle:"Andrea Bandean – Profesor de pian", mainSubtitle:"Lecții personalizate de pian pentru copii, adolescenți și adulți",
+        introText:"<strong>Andrea Bandean-Gombkötő</strong> este o profesoară de pian pasionată și dedicată, cu peste 20 de ani de experiență.",
+        aboutHeading:"Despre mine", aboutText:"M-am născut în Transilvania (Târgu Mureș, România) și am descoperit devreme drumul către muzică – și mai ales către pian. După finalizarea studiilor muzicale cu specializarea pian la Universitatea din Oradea și obținerea unui master în management educațional, am reușit să transform pasiunea mea în profesie.",
+        offerHeading:"Ofertele mele", offer1:"🎹 Lecții de pian pentru începători până la avansați", offer2:"<strong>🎶 Pe lângă muzica clasică, muzică pop și de film</strong>", offer3:"👧👦 Educație muzicală timpurie pentru copii într-o formă jucăușă", offer4:"🎼 Pregătire pentru concerte, examene și concursuri", offer5:"🎤 Cântat împreună, improvizație și acompaniament",
+        focusHeading:"Focusul meu", focusText:"Fiecare elev este unic – de aceea pun mare preț pe sprijin individual, răbdare și bucuria de a face muzică. Indiferent dacă stai pentru prima dată la pian sau ai deja obiective clare – te voi însoți cu drag pe drumul tău muzical.",
+        philosophyHeading:"Filozofia mea", philosophyText:"„Muzica începe acolo unde cuvintele se termină.”<br> Pentru mine, muzica este un limbaj universal care atinge inima, formează personalitatea și oferă bucurie o viață întreagă.",
+        videoTitle:"Videoclipuri de spectacol", videoSubtitle:"O privire în concertele mele",
+        photoTitle:"Fotografii", photoSubtitle:"Momente din lecții și spectacole",
+        pricesTitle:"Prețuri", pricesSubtitle:"Opțiuni flexibile de lecții", 
+        price0: "Prima lecție (lecție de probă) este gratuită.",
+        price1:"🎹 1 oră (60min) de lecție în studio: <strong>25 €</strong>  10 ore: <strong>230 €</strong>", 
+        price2:"🏠 1 oră (60min) de lecție la domiciliul elevului: <strong>30 €</strong> 10 ore ore: <strong>250 €</strong>", 
+        price3:"🎹 1 oră (45min) de lecție în studio: <strong>20 €</strong>  10 ore: <strong>180 €</strong>", 
+        price4:"🏠 1 oră (45min) de lecție la domiciliul elevului: <strong>25 €</strong> 10 ore ore: <strong>200 €</strong>",
+        price5:"🎹 1 oră (30min) de lecție în studio: <strong>18 €</strong>  10 ore: <strong>160 €</strong>", 
+        price6:"🏠 1 oră (30min) de lecție la domiciliul elevului: <strong>20 €</strong> 10 ore ore: <strong>180 €</strong>",
+        price7: "Lecțiile pot fi susținute în germană, maghiară, română sau engleză, în funcție de preferința elevului.", 
+        price8: "Conform scutirii de TVA prevăzute la § 4 Nr. 21 a) bb) UStG, nu percep TVA și, prin urmare, nu îl afișez pe facturi.",
+        contactTitle:"Contact", contactSubtitle:"Scrieți-mi pentru lecții de probă sau întrebări", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 71706 Unterriexingen",
+        footerText:"Contor de vizitatori"
+      }
+    };
+
+    const elements = [
+      "pageTitle","siteTitle","navAbout","navVideos","navPhotos","navPrices","navContact",
+      "mainTitle","mainSubtitle","introText","aboutHeading","aboutText",
+      "offerHeading","offer1","offer2","offer3","offer4","offer5",
+      "focusHeading","focusText","philosophyHeading","philosophyText",
+      "videoTitle","videoSubtitle","photoTitle","photoSubtitle",
+      "pricesTitle","pricesSubtitle","price0","price1","price2","price3","price4","price5","price6","price7","price8",
+      "contactTitle","contactSubtitle","contactText","footerText"
+    ];
+
+    function setLanguage(lang) {
+      elements.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && translations[lang][id]) {
+          el.innerHTML = translations[lang][id];
+        }
+      });
+      document.title = translations[lang].pageTitle;
+      // Update meta description
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc && translations[lang].description) {
+        metaDesc.setAttribute("content", translations[lang].description);
+      }
+
+      document.documentElement.lang = lang;
+    }
+  </script>
+
+  <!-- 💗🌸 Hearts + Flowers Effect (replaces ribbons/confetti/snow) -->
+  <script>
+    const hfItems = ["💗","💖","💜","💞","🌸","🌼","🌷","💐","🌺","🪻"];
+    function rand(min, max){ return min + Math.random() * (max - min); }
+    function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+
+    function createHF() {
+      const el = document.createElement("div");
+      el.className = "hf";
+      el.textContent = pick(hfItems);
+
+      // small sizes
+      const size = rand(12, 18);
+      el.style.fontSize = size + "px";
+
+      // position + motion
+      const x = Math.round(rand(0, window.innerWidth));
+      el.style.setProperty("--x", x + "px");
+      el.style.setProperty("--drift", Math.round(rand(-70, 70)) + "px");
+      el.style.setProperty("--rot", Math.round(rand(-540, 540)) + "deg");
+
+      const dur = rand(6, 11);
+      el.style.animationDuration = dur + "s";
+
+      document.body.appendChild(el);
+
+      setTimeout(() => el.remove(), Math.ceil((dur + 1) * 1000));
+    }
+
+    // balanced density
+    setInterval(createHF, 180);
+  </script>
+
+</body>
+</html>
