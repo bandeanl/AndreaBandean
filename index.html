@@ -183,27 +183,26 @@
       }
     }
 
-    /* ========================================= */
-    /* 💗🌸 Hearts + Flowers falling effect (NEW) */
-    /* ========================================= */
-    .hf {
+    /* Gentle falling snow */
+    .snowflake {
       position: fixed;
       top: -24px;
       left: 0;
       pointer-events: none;
       z-index: 9999;
-      font-size: 14px; /* small */
-      opacity: 0.95;
-      transform: translate3d(0,0,0) rotate(0deg);
-      animation: hfFall linear forwards;
+      color: #8bbfe8;
+      opacity: 0.85;
+      text-shadow: 0 0 5px rgba(255,255,255,0.9);
+      transform: translate3d(0,0,0);
+      animation: snowFall linear forwards;
       will-change: transform, opacity;
-      filter: drop-shadow(0 0 1px rgba(0,0,0,0.12));
       user-select: none;
     }
 
-    @keyframes hfFall {
-      0%   { transform: translate3d(var(--x), -20px, 0) rotate(0deg); opacity: 0.95; }
-      100% { transform: translate3d(calc(var(--x) + var(--drift)), 110vh, 0) rotate(var(--rot)); opacity: 0.9; }
+    @keyframes snowFall {
+      0%   { transform: translate3d(var(--x), -24px, 0) rotate(0deg); opacity: 0; }
+      10%  { opacity: 0.9; }
+      100% { transform: translate3d(calc(var(--x) + var(--drift)), 110vh, 0) rotate(var(--rot)); opacity: 0.65; }
     }
   </style>
 
@@ -367,12 +366,12 @@
     </hgroup>
     <ul class="price-list">
       <li id="price0">Die erste Schnupperstunde ist kostenlos.</li>
-      <li id="price1">🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>25 €</strong> 10er Pack: <strong>230 €</strong> </li>
-      <li id="price2">🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>30 €</strong> 10er Pack: <strong>250 €</strong></li>
-      <li id="price3">🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>20 €</strong> 10er Pack: <strong>180 €</strong> </li>
-      <li id="price4">🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>25 €</strong> 10er Pack: <strong>200 €</strong></li>
-      <li id="price5">🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>18 €</strong> 10er Pack: <strong>160 €</strong> </li>
-      <li id="price6">🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>20 €</strong> 10er Pack: <strong>180 €</strong></li>
+      <li id="price1">🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>15 €</strong> 10er Pack: <strong>130 €</strong> </li>
+      <li id="price2">🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>20 €</strong> 10er Pack: <strong>180 €</strong></li>
+      <li id="price3">🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>12 €</strong> 10er Pack: <strong>100 €</strong> </li>
+      <li id="price4">🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>15 €</strong> 10er Pack: <strong>130 €</strong></li>
+      <li id="price5">🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>10 €</strong> 10er Pack: <strong>80 €</strong> </li>
+      <li id="price6">🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>12 €</strong> 10er Pack: <strong>100 €</strong></li>
       <li id="price7">Der Unterricht kann je nach Wunsch des Schülers in Deutsch, Ungarisch, Rumänisch oder Englisch stattfinden.</li>
       <li id="price8">Aufgrund der Umsatzsteuerbefreiung gem. § 4 Nr. 21 a) bb) UStG erhebe ich keine Umsatzsteuer und weise diese daher auch nicht aus.</li>	
     </ul>
@@ -412,12 +411,12 @@
         photoTitle:"Fotos", photoSubtitle:"Momente aus Unterricht & Auftritten",
         pricesTitle:"Preise", pricesSubtitle:"Flexible Unterrichtsmöglichkeiten", 
         price0: "Die erste Schnupperstunde ist kostenlos.",
-        price1:"🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>25 €</strong> 10er Pack: <strong>230 €</strong>", 
-        price2:"🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>30 €</strong> 10er Pack: <strong>250 €</strong>",
-        price3:"🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>20 €</strong> 10er Pack: <strong>180 €</strong>", 
-        price4:"🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>25 €</strong> 10er Pack: <strong>200 €</strong>",
-        price5:"🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>18 €</strong> 10er Pack: <strong>160 €</strong>", 
-        price6:"🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>20 €</strong> 10er Pack: <strong>180 €</strong>",
+        price1:"🎹 1 Stunde (60 Min) Unterricht im Studio: <strong>15 €</strong> 10er Pack: <strong>130 €</strong>", 
+        price2:"🏠 1 Stunde (60 Min) Unterricht beim Schüler zuhause: <strong>20 €</strong> 10er Pack: <strong>180 €</strong>",
+        price3:"🎹 1 Stunde (45 Min) Unterricht im Studio: <strong>12 €</strong> 10er Pack: <strong>100 €</strong>", 
+        price4:"🏠 1 Stunde (45 Min) Unterricht beim Schüler zuhause: <strong>15 €</strong> 10er Pack: <strong>130 €</strong>",
+        price5:"🎹 1 Stunde (30 Min) Unterricht im Studio: <strong>10 €</strong> 10er Pack: <strong>80 €</strong>", 
+        price6:"🏠 1 Stunde (30 Min) Unterricht beim Schüler zuhause: <strong>12 €</strong> 10er Pack: <strong>100 €</strong>",
         price7: "Der Unterricht kann je nach Wunsch des Schülers in Deutsch, Ungarisch, Rumänisch oder Englisch stattfinden.", 
         price8: "Aufgrund der Umsatzsteuerbefreiung gem. § 4 Nr. 21 a) bb) UStG erhebe ich keine Umsatzsteuer und weise diese daher auch nicht aus.",
         contactTitle:"Kontakt", contactSubtitle:"Schreiben Sie mir für Probestunden oder Fragen", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 Stuttgart - Ludwigsburg",
@@ -436,12 +435,12 @@
         photoTitle:"Photos", photoSubtitle:"Moments from lessons & performances",
         pricesTitle:"Prices", pricesSubtitle:"Flexible lesson options",
         price0: "The first lesson (trial lesson) is free of charge.", 
-        price1:"🎹 1 hour (60 Min) lesson in studio: <strong>25 €</strong>  10 lessons: <strong>230 €</strong>", 
-        price2:"🏠 1 hour (60 Min) lesson at student's home: <strong>30 €</strong> 10 lessons: <strong>250 €</strong>", 
-        price3:"🎹 1 hour (45 Min) lesson in studio: <strong>20 €</strong>  10 lessons: <strong>180 €</strong>", 
-        price4:"🏠 1 hour (45 Min) lesson at student's home: <strong>25 €</strong> 10 lessons: <strong>200 €</strong>", 
-        price5:"🎹 1 hour (30 Min) lesson in studio: <strong>18 €</strong>  10 lessons: <strong>160 €</strong>", 
-        price6:"🏠 1 hour (30 Min) lesson at student's home: <strong>20 €</strong> 10 lessons: <strong>180 €</strong>", 
+        price1:"🎹 1 hour (60 Min) lesson in studio: <strong>15 €</strong>  10 lessons: <strong>130 €</strong>", 
+        price2:"🏠 1 hour (60 Min) lesson at student's home: <strong>20 €</strong> 10 lessons: <strong>180 €</strong>", 
+        price3:"🎹 1 hour (45 Min) lesson in studio: <strong>12 €</strong>  10 lessons: <strong>100 €</strong>", 
+        price4:"🏠 1 hour (45 Min) lesson at student's home: <strong>15 €</strong> 10 lessons: <strong>130 €</strong>", 
+        price5:"🎹 1 hour (30 Min) lesson in studio: <strong>10 €</strong>  10 lessons: <strong>80 €</strong>", 
+        price6:"🏠 1 hour (30 Min) lesson at student's home: <strong>12 €</strong> 10 lessons: <strong>100 €</strong>", 
         price7: "Lessons can be held in German, Hungarian, Romanian, or English, depending on the student's preference.", 
         price8: "Due to VAT exemption according to § 4 No. 21 a) bb) UStG, I do not charge VAT and therefore do not list it on invoices.",
         contactTitle:"Contact", contactSubtitle:"Write to me for trial lessons or questions", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 Stuttgart - Ludwigsburg",
@@ -460,12 +459,12 @@
         photoTitle:"Fotók", photoSubtitle:"Pillanatok az órákról és előadásokról",
         pricesTitle:"Árak", pricesSubtitle:"Rugalmas oktatási lehetőségek", 
         price0: "Az első óra (próbaóra) ingyenes.",
-        price1:"🎹 1 óra (60 perc) oktatás stúdióban: <strong>25 €</strong> 10es csomag: <strong>230 €</strong>", 
-        price2:"🏠 1 óra (60 perc) oktatás a tanuló otthonában: <strong>30 €</strong> 10es csomag: <strong>250 €</strong>",
-        price3:"🎹 1 óra (45 perc) oktatás stúdióban: <strong>20 €</strong> 10es csomag: <strong>180 €</strong>", 
-        price4:"🏠 1 óra (45 perc) oktatás a tanuló otthonában: <strong>25 €</strong> 10es csomag: <strong>200 €</strong>",  
-        price5:"🎹 1 óra (30 perc) oktatás stúdióban: <strong>18 €</strong> 10es csomag: <strong>160 €</strong>", 
-        price6:"🏠 1 óra (30 perc) oktatás a tanuló otthonában: <strong>20 €</strong> 10es csomag: <strong>180 €</strong>", 
+        price1:"🎹 1 óra (60 perc) oktatás stúdióban: <strong>15 €</strong> 10es csomag: <strong>180 €</strong>", 
+        price2:"🏠 1 óra (60 perc) oktatás a tanuló otthonában: <strong>20 €</strong> 10es csomag: <strong>180 €</strong>",
+        price3:"🎹 1 óra (45 perc) oktatás stúdióban: <strong>12 €</strong> 10es csomag: <strong>100 €</strong>", 
+        price4:"🏠 1 óra (45 perc) oktatás a tanuló otthonában: <strong>15 €</strong> 10es csomag: <strong>130 €</strong>",  
+        price5:"🎹 1 óra (30 perc) oktatás stúdióban: <strong>10 €</strong> 10es csomag: <strong>80 €</strong>", 
+        price6:"🏠 1 óra (30 perc) oktatás a tanuló otthonában: <strong>12 €</strong> 10es csomag: <strong>100 €</strong>", 
         price7: "Az órák a diák kívánsága szerint német, magyar, román vagy angol nyelven is tarthatók.", 
         price8: "A német adótörvény § 4 Nr. 21 a) bb) UStG pontja alapján az oktatás áfamentes, így áfát nem számítok fel és nem is tüntetek fel.",
         contactTitle:"Kapcsolat", contactSubtitle:"Írjon nekem próbaórákért vagy kérdésekért", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 Stuttgart - Ludwigsburg",
@@ -484,12 +483,12 @@
         photoTitle:"Fotografii", photoSubtitle:"Momente din lecții și spectacole",
         pricesTitle:"Prețuri", pricesSubtitle:"Opțiuni flexibile de lecții", 
         price0: "Prima lecție (lecție de probă) este gratuită.",
-        price1:"🎹 1 oră (60min) de lecție în studio: <strong>25 €</strong>  10 ore: <strong>230 €</strong>", 
-        price2:"🏠 1 oră (60min) de lecție la domiciliul elevului: <strong>30 €</strong> 10 ore ore: <strong>250 €</strong>", 
-        price3:"🎹 1 oră (45min) de lecție în studio: <strong>20 €</strong>  10 ore: <strong>180 €</strong>", 
-        price4:"🏠 1 oră (45min) de lecție la domiciliul elevului: <strong>25 €</strong> 10 ore ore: <strong>200 €</strong>",
-        price5:"🎹 1 oră (30min) de lecție în studio: <strong>18 €</strong>  10 ore: <strong>160 €</strong>", 
-        price6:"🏠 1 oră (30min) de lecție la domiciliul elevului: <strong>20 €</strong> 10 ore ore: <strong>180 €</strong>",
+        price1:"🎹 1 oră (60min) de lecție în studio: <strong>15 €</strong>  10 ore: <strong>130 €</strong>", 
+        price2:"🏠 1 oră (60min) de lecție la domiciliul elevului: <strong>20 €</strong> 10 ore ore: <strong>180 €</strong>", 
+        price3:"🎹 1 oră (45min) de lecție în studio: <strong>12 €</strong>  10 ore: <strong>100 €</strong>", 
+        price4:"🏠 1 oră (45min) de lecție la domiciliul elevului: <strong>15 €</strong> 10 ore ore: <strong>130 €</strong>",
+        price5:"🎹 1 oră (30min) de lecție în studio: <strong>10 €</strong>  10 ore: <strong>80 €</strong>", 
+        price6:"🏠 1 oră (30min) de lecție la domiciliul elevului: <strong>12 €</strong> 10 ore ore: <strong>100 €</strong>",
         price7: "Lecțiile pot fi susținute în germană, maghiară, română sau engleză, în funcție de preferința elevului.", 
         price8: "Conform scutirii de TVA prevăzute la § 4 Nr. 21 a) bb) UStG, nu percep TVA și, prin urmare, nu îl afișez pe facturi.",
         contactTitle:"Contact", contactSubtitle:"Scrieți-mi pentru lecții de probă sau întrebări", contactText:"📧 <a href='mailto:andreabandean@aol.com'>andreabandean@aol.com</a><br> 📞 +49 176 3459 3975<br> 📍 Stuttgart - Ludwigsburg",
@@ -525,37 +524,30 @@
     }
   </script>
 
-  <!-- 💗🌸 Hearts + Flowers Effect (replaces ribbons/confetti/snow) -->
+  <!-- Falling snow effect -->
   <script>
-    const hfItems = ["💗","💖","💜","💞","🌸","🌼","🌷","💐","🌺","🪻"];
+    const snowItems = ["❄", "❅", "❆", "·"];
     function rand(min, max){ return min + Math.random() * (max - min); }
     function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
 
-    function createHF() {
+    function createSnowflake() {
       const el = document.createElement("div");
-      el.className = "hf";
-      el.textContent = pick(hfItems);
+      el.className = "snowflake";
+      el.textContent = pick(snowItems);
+      el.style.fontSize = rand(9, 19) + "px";
 
-      // small sizes
-      const size = rand(12, 18);
-      el.style.fontSize = size + "px";
-
-      // position + motion
       const x = Math.round(rand(0, window.innerWidth));
       el.style.setProperty("--x", x + "px");
-      el.style.setProperty("--drift", Math.round(rand(-70, 70)) + "px");
-      el.style.setProperty("--rot", Math.round(rand(-540, 540)) + "deg");
+      el.style.setProperty("--drift", Math.round(rand(-90, 90)) + "px");
+      el.style.setProperty("--rot", Math.round(rand(-240, 240)) + "deg");
 
-      const dur = rand(6, 11);
-      el.style.animationDuration = dur + "s";
-
+      const duration = rand(7, 14);
+      el.style.animationDuration = duration + "s";
       document.body.appendChild(el);
-
-      setTimeout(() => el.remove(), Math.ceil((dur + 1) * 1000));
+      setTimeout(() => el.remove(), Math.ceil((duration + 1) * 1000));
     }
 
-    // balanced density
-    setInterval(createHF, 180);
+    setInterval(createSnowflake, 220);
   </script>
 
 </body>
